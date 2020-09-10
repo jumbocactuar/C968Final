@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C968FinalProject
 {
-    public partial class Main_Screen : Form
+    public partial class modifyPartForm : Form
     {
-        public Main_Screen()
+        public modifyPartForm()
         {
             InitializeComponent();
         }

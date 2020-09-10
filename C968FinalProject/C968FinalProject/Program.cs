@@ -16,7 +16,7 @@ namespace C968FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main_Screen());
+            Application.Run(new mainScreen());
         }
     }
 }

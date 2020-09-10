@@ -1,6 +1,6 @@
 ﻿namespace C968FinalProject
 {
-    partial class Main_Screen
+    partial class modifyProductForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Main_Screen
+            // modifyProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Main_Screen";
-            this.Text = "Main Screen";
+            this.Name = "modifyProductForm";
+            this.Text = "Modify Product";
             this.ResumeLayout(false);
 
         }
@@ -44,4 +44,3 @@
         #endregion
     }
 }
-
