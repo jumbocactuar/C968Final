@@ -1,6 +1,6 @@
 ﻿namespace C968FinalProject
 {
-    partial class mainScreen
+    partial class mainScreenForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,10 @@
             this.partsSearchTextBox = new System.Windows.Forms.TextBox();
             this.productsSearchButton = new System.Windows.Forms.Button();
             this.productsSearchTextBox = new System.Windows.Forms.TextBox();
+            this.productsGridView = new System.Windows.Forms.DataGridView();
+            this.partsGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // mainLabel
@@ -56,7 +60,7 @@
             // 
             // programExitButton
             // 
-            this.programExitButton.Location = new System.Drawing.Point(1097, 426);
+            this.programExitButton.Location = new System.Drawing.Point(1197, 526);
             this.programExitButton.Name = "programExitButton";
             this.programExitButton.Size = new System.Drawing.Size(75, 23);
             this.programExitButton.TabIndex = 1;
@@ -66,7 +70,7 @@
             // 
             // partsAddButton
             // 
-            this.partsAddButton.Location = new System.Drawing.Point(290, 370);
+            this.partsAddButton.Location = new System.Drawing.Point(375, 456);
             this.partsAddButton.Name = "partsAddButton";
             this.partsAddButton.Size = new System.Drawing.Size(75, 23);
             this.partsAddButton.TabIndex = 2;
@@ -76,7 +80,7 @@
             // 
             // partsModifyButton
             // 
-            this.partsModifyButton.Location = new System.Drawing.Point(371, 370);
+            this.partsModifyButton.Location = new System.Drawing.Point(456, 456);
             this.partsModifyButton.Name = "partsModifyButton";
             this.partsModifyButton.Size = new System.Drawing.Size(75, 23);
             this.partsModifyButton.TabIndex = 3;
@@ -86,7 +90,7 @@
             // 
             // partsDeleteButton
             // 
-            this.partsDeleteButton.Location = new System.Drawing.Point(452, 370);
+            this.partsDeleteButton.Location = new System.Drawing.Point(537, 456);
             this.partsDeleteButton.Name = "partsDeleteButton";
             this.partsDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.partsDeleteButton.TabIndex = 4;
@@ -96,7 +100,7 @@
             // 
             // productsAddButton
             // 
-            this.productsAddButton.Location = new System.Drawing.Point(906, 370);
+            this.productsAddButton.Location = new System.Drawing.Point(1035, 456);
             this.productsAddButton.Name = "productsAddButton";
             this.productsAddButton.Size = new System.Drawing.Size(75, 23);
             this.productsAddButton.TabIndex = 5;
@@ -106,7 +110,7 @@
             // 
             // productsModifyButton
             // 
-            this.productsModifyButton.Location = new System.Drawing.Point(987, 370);
+            this.productsModifyButton.Location = new System.Drawing.Point(1116, 456);
             this.productsModifyButton.Name = "productsModifyButton";
             this.productsModifyButton.Size = new System.Drawing.Size(75, 23);
             this.productsModifyButton.TabIndex = 6;
@@ -116,7 +120,7 @@
             // 
             // productsDeleteButton
             // 
-            this.productsDeleteButton.Location = new System.Drawing.Point(1068, 370);
+            this.productsDeleteButton.Location = new System.Drawing.Point(1197, 456);
             this.productsDeleteButton.Name = "productsDeleteButton";
             this.productsDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.productsDeleteButton.TabIndex = 7;
@@ -128,7 +132,7 @@
             // 
             this.partsLabel.AutoSize = true;
             this.partsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partsLabel.Location = new System.Drawing.Point(42, 86);
+            this.partsLabel.Location = new System.Drawing.Point(12, 91);
             this.partsLabel.Name = "partsLabel";
             this.partsLabel.Size = new System.Drawing.Size(46, 20);
             this.partsLabel.TabIndex = 8;
@@ -138,7 +142,7 @@
             // 
             this.productsLabel.AutoSize = true;
             this.productsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productsLabel.Location = new System.Drawing.Point(646, 90);
+            this.productsLabel.Location = new System.Drawing.Point(668, 91);
             this.productsLabel.Name = "productsLabel";
             this.productsLabel.Size = new System.Drawing.Size(72, 20);
             this.productsLabel.TabIndex = 9;
@@ -146,7 +150,7 @@
             // 
             // partsSearchButton
             // 
-            this.partsSearchButton.Location = new System.Drawing.Point(246, 86);
+            this.partsSearchButton.Location = new System.Drawing.Point(250, 89);
             this.partsSearchButton.Name = "partsSearchButton";
             this.partsSearchButton.Size = new System.Drawing.Size(75, 23);
             this.partsSearchButton.TabIndex = 10;
@@ -156,14 +160,14 @@
             // 
             // partsSearchTextBox
             // 
-            this.partsSearchTextBox.Location = new System.Drawing.Point(327, 88);
+            this.partsSearchTextBox.Location = new System.Drawing.Point(331, 91);
             this.partsSearchTextBox.Name = "partsSearchTextBox";
             this.partsSearchTextBox.Size = new System.Drawing.Size(200, 20);
             this.partsSearchTextBox.TabIndex = 11;
             // 
             // productsSearchButton
             // 
-            this.productsSearchButton.Location = new System.Drawing.Point(862, 88);
+            this.productsSearchButton.Location = new System.Drawing.Point(910, 89);
             this.productsSearchButton.Name = "productsSearchButton";
             this.productsSearchButton.Size = new System.Drawing.Size(75, 23);
             this.productsSearchButton.TabIndex = 12;
@@ -173,16 +177,34 @@
             // 
             // productsSearchTextBox
             // 
-            this.productsSearchTextBox.Location = new System.Drawing.Point(943, 90);
+            this.productsSearchTextBox.Location = new System.Drawing.Point(991, 91);
             this.productsSearchTextBox.Name = "productsSearchTextBox";
             this.productsSearchTextBox.Size = new System.Drawing.Size(200, 20);
             this.productsSearchTextBox.TabIndex = 13;
             // 
-            // mainScreen
+            // productsGridView
+            // 
+            this.productsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.productsGridView.Location = new System.Drawing.Point(672, 150);
+            this.productsGridView.Name = "productsGridView";
+            this.productsGridView.Size = new System.Drawing.Size(600, 300);
+            this.productsGridView.TabIndex = 14;
+            // 
+            // partsGridView
+            // 
+            this.partsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.partsGridView.Location = new System.Drawing.Point(12, 150);
+            this.partsGridView.Name = "partsGridView";
+            this.partsGridView.Size = new System.Drawing.Size(600, 300);
+            this.partsGridView.TabIndex = 15;
+            // 
+            // mainScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.ClientSize = new System.Drawing.Size(1284, 561);
+            this.Controls.Add(this.partsGridView);
+            this.Controls.Add(this.productsGridView);
             this.Controls.Add(this.productsSearchTextBox);
             this.Controls.Add(this.productsSearchButton);
             this.Controls.Add(this.partsSearchTextBox);
@@ -197,8 +219,10 @@
             this.Controls.Add(this.partsAddButton);
             this.Controls.Add(this.programExitButton);
             this.Controls.Add(this.mainLabel);
-            this.Name = "mainScreen";
+            this.Name = "mainScreenForm";
             this.Text = "Main Screen";
+            ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,6 +244,8 @@
         private System.Windows.Forms.TextBox partsSearchTextBox;
         private System.Windows.Forms.Button productsSearchButton;
         private System.Windows.Forms.TextBox productsSearchTextBox;
+        private System.Windows.Forms.DataGridView productsGridView;
+        private System.Windows.Forms.DataGridView partsGridView;
     }
 }
 

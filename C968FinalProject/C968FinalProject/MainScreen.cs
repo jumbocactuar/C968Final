@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace C968FinalProject
 {
-    public partial class mainScreen : Form
+    public partial class mainScreenForm : Form
     {
-        public mainScreen()
+        public mainScreenForm()
         {
             InitializeComponent();
         }
@@ -51,11 +52,6 @@ namespace C968FinalProject
             //FIXME: Give this button something to do
         }
 
-        private void programExitButton_Click(object sender, EventArgs e)
-        {
-            //FIXME: Give this button something to do
-        }
-
         private void partsSearchButton_Click(object sender, EventArgs e)
         {
             //FIXME: Give this button something to do
@@ -64,6 +60,10 @@ namespace C968FinalProject
         private void productsSearchButton_Click(object sender, EventArgs e)
         {
             //FIXME: Give this button something to do
+        }
+        private void programExitButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
