@@ -18,6 +18,11 @@ namespace C968FinalProject
             InitializeComponent();
         }
 
+        /*private void partsDataGridView_Load(object sender, EventArgs e)
+        {
+
+        }*/
+
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             addPartForm f = new addPartForm();
@@ -65,5 +70,13 @@ namespace C968FinalProject
         {
             Close();
         }
+
+        //FIXME: Delete this before submission
+        private void practiceFormButton_Click(object sender, EventArgs e)
+        {
+            practiceForm f = new practiceForm();
+            f.Show();
+        }
+
     }
 }
