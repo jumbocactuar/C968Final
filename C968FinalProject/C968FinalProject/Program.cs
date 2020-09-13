@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 // FIXME: Does System.ComponentModel need to be in all the files?
 namespace C968FinalProject
 {
@@ -21,13 +22,53 @@ namespace C968FinalProject
         }
     }
 
-    public class Inventory
+    public class Inventory : Part
     {
         public BindingList<Product> Products { get; }
         public BindingList<Part> AllParts { get; }
+
+        public void addProduct(Product product)
+        {
+
+        }
+
+        public bool removeProduct(int p)
+        {
+
+        }
+
+        public Product lookupProduct(int q)
+        {
+
+        }
+
+        public void updateProduct(int q, Product p)
+        {
+
+        }
+
+        public void addPart(Part p)
+        {
+
+        }
+
+        public bool deletePart(int q)
+        {
+
+        }
+
+        public Part lookupPart(int q)
+        {
+
+        }
+
+        public void updatePart(int q, Part p)
+        {
+
+        }
     }
 
-    public class Product
+    public class Product : Part // FIXME: You need the "Base" or something
     {
         public BindingList<Part> AssociatedPart { get; }
         public int ProductID { get; }
@@ -37,7 +78,22 @@ namespace C968FinalProject
         public int Min { get; }
         public int Max { get; }
 
-        // FIXME: is a default constructor necessary?
+        public void addAssociatedPart(Part part)
+        {
+
+        }
+
+        public bool removeAssociatedPart(int p)
+        {
+
+        }
+
+        public Part lookupAssociatedPart(int p)
+        {
+
+        }
+
+        /*// FIXME: is a default constructor necessary?
         // default constructor
         public Product()
         {
@@ -54,7 +110,7 @@ namespace C968FinalProject
             InStock = inStock;
             Min = min;
             Max = max;
-        }
+        }*/
     }
 
     public abstract class Part
@@ -65,5 +121,22 @@ namespace C968FinalProject
         public int InStock { get; }
         public int Min { get; }
         public int Max { get; }
+
+        /*// FIXME: Is a default constructor necessary?
+        public Part()
+        {
+
+        }
+
+        // constructor containing all properties
+        public Part(int partID, string name, decimal price, int inStock, int min, int max)
+        {
+            PartID = partID;
+            Name = name;
+            Price = price;
+            InStock = inStock;
+            Min = min;
+            Max = max;
+        }*/
     }
 }
