@@ -22,7 +22,7 @@ namespace C968FinalProject
         }
     }
 
-    public class Inventory : Part
+    public class Inventory
     {
         public BindingList<Product> Products { get; }
         public BindingList<Part> AllParts { get; }
@@ -68,7 +68,7 @@ namespace C968FinalProject
         }
     }
 
-    public class Product : Part // FIXME: You need the "Base" or something
+    public class Product
     {
         public BindingList<Part> AssociatedPart { get; }
         public int ProductID { get; }
@@ -98,7 +98,7 @@ namespace C968FinalProject
         public Product()
         {
 
-        }
+        }*/
 
         // constructor containing all properties
         public Product(BindingList<Part> associatedPart, int productID, string name, decimal price, int inStock, int min, int max)
@@ -110,7 +110,7 @@ namespace C968FinalProject
             InStock = inStock;
             Min = min;
             Max = max;
-        }*/
+        }
     }
 
     public abstract class Part
@@ -126,7 +126,7 @@ namespace C968FinalProject
         public Part()
         {
 
-        }
+        }*/
 
         // constructor containing all properties
         public Part(int partID, string name, decimal price, int inStock, int min, int max)
@@ -137,6 +137,26 @@ namespace C968FinalProject
             InStock = inStock;
             Min = min;
             Max = max;
-        }*/
+        }
+    }
+
+    public class Inhouse : Part
+    {
+        public int MachineID { get; }
+
+        public Inhouse(int machineID) : base(10, "name", 3.50M, 1, 2, 3) // FIXME: Is the M necessary? Is it for literal values or something?
+        {
+            MachineID = machineID;
+        }
+    }
+
+    public class Outsourced : Part
+    {
+        public string CompanyName { get; }
+
+        public Outsourced(string companyName) : base(11, "name", 3.50M, 1, 2, 3)
+        {
+            CompanyName = companyName;
+        }
     }
 }
