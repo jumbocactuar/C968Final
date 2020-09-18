@@ -138,25 +138,81 @@ namespace C968FinalProject
             Min = min;
             Max = max;
         }
+
+        public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
+
+        // FIXME: The example has an abstract method used by the derived classes here--is it necessary?
+        // Is this good? Is this necessary?
+        public abstract string PartSource();
+        // FIXME: I think I'll need something around here to allow switching of parts between in-house and outsourced - think of how to preserve part numbers
+        // Can I say something like "if the part number exists, use it?" Will that data survive a move between classes? I think the object will get destroyed and recreated
+        // when it moves between the two.
     }
 
     public class Inhouse : Part
     {
-        public int MachineID { get; }
+        public int machineID;
 
-        public Inhouse(int machineID) : base(10, "name", 3.50M, 1, 2, 3) // FIXME: Is the M necessary? Is it for literal values or something?
+        public Inhouse(int partID, string name, decimal price, int inStock, int min, int max, int machineID)
+        : base(partID, name, price, inStock, min, max)
         {
             MachineID = machineID;
         }
+
+        public int MachineID
+        {
+            get
+            {
+                return machineID;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), value, $"{nameof(MachineID)} must be >= 0");
+                }
+
+                machineID = value;
+            }
+        }
+
+        public override string PartSource() => $"{MachineID}";
+
+        public override string ToString() => $"{base.ToString()}" + $"{MachineID}";
     }
 
     public class Outsourced : Part
     {
-        public string CompanyName { get; }
+        public string companyName;
 
-        public Outsourced(string companyName) : base(11, "name", 3.50M, 1, 2, 3)
+        public Outsourced(int partID, string name, decimal price, int inStock, int min, int max, string companyName)
+        : base(partID, name, price, inStock, min, max)
         {
             CompanyName = companyName;
         }
+
+        public string CompanyName
+        {
+            get
+            {
+                return companyName;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    // FIXME: Do I really need to throw an exception here? If so, what kind? ArgumentOutOfRangeException?
+                    throw new ArgumentNullException(nameof(value), $"{nameof(CompanyName)} must not be null");
+                }
+
+                companyName = value;
+            }
+        }
+
+        public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
+
+        public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";
     }
 }
