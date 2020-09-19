@@ -115,6 +115,7 @@ namespace C968FinalProject
 
     public abstract class Part
     {
+        // FIXME: Are these getter-only auto-implemented properties because this is an abstract class (and therefore should not produce objects? (is that right?))
         public int PartID { get; }
         public string Name { get; }
         public decimal Price { get; }
@@ -122,13 +123,13 @@ namespace C968FinalProject
         public int Min { get; }
         public int Max { get; }
 
-        /*// FIXME: Is a default constructor necessary?
+        // Default constructor
         public Part()
         {
 
-        }*/
+        }
 
-        // constructor containing all properties
+        // Constructor containing all properties
         public Part(int partID, string name, decimal price, int inStock, int min, int max)
         {
             PartID = partID;
@@ -203,7 +204,6 @@ namespace C968FinalProject
             {
                 if (value == null)
                 {
-                    // FIXME: Do I really need to throw an exception here? If so, what kind? ArgumentOutOfRangeException?
                     throw new ArgumentNullException(nameof(value), $"{nameof(CompanyName)} must not be null");
                 }
 
