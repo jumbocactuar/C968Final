@@ -25,16 +25,48 @@ namespace C968FinalProject
     public class Inventory
     {
         public BindingList<Product> Products { get; }
-        public BindingList<Part> AllParts { get; }
+        public BindingList<Part> AllParts { get; } // FIXME: do these need to get? Should I get/set in the methods below?
+
+        public void InitializeProductsList()
+        {
+            // Create a new BindingList of type Product
+            Products = new BindingList<Product>();
+           
+            Products.AllowNew = true; // FIXME: Is this necessary?
+
+            Products.AllowEdit = true; // FIXME: Is this necessary?
+            
+            // Add a couple of parts to the list.
+            //listOfParts.Add(new Part("Widget", 1234));
+            //listOfParts.Add(new Part("Gadget", 5647));
+        }
+
+        public void InitializePartsList()
+        {
+            // Create a new BindingList of type Part
+            AllParts = new BindingList<Part>();
+
+            AllParts.AllowNew = true;
+
+            AllParts.AllowEdit = true;
+        }
 
         public void addProduct(Product product)
         {
-
+            Products.Add(product);
+            //product = new Product(); // textBox1.Text, int.Parse(textBox2.Text)...
+            // FIXME: Upon clicking the Add Product button, a new Product object is created using the arguments
+            // supplied in the textboxes on the Add Product form. That object is then passed as an argument to
+            // addProduct(), so be sure to call it when you click the Add Product button.
+            // Would this work? Product newProduct1 = new Product(textBox1.Text, etc.);
+            // addProduct(newProduct1);
         }
 
         public bool removeProduct(int p)
         {
-
+            // FIXME: I think this will end up being "delete object from the binding list at index [p]"
+            // This creates kind of a conundrum: the ProductID and its index are different
+            // Am I going to be able to select a product in the datagridview?
         }
 
         public Product lookupProduct(int q)
@@ -70,13 +102,14 @@ namespace C968FinalProject
 
     public class Product
     {
-        public BindingList<Part> AssociatedPart { get; }
+        public BindingList<Part> AssociatedPart { get; } // FIXME: Do I need to be "get"ing here?
         public int ProductID { get; }
         public string Name { get; }
         public decimal Price { get; }
         public int InStock { get; }
         public int Min { get; }
         public int Max { get; }
+        public int ProductsIDCounter;
 
         public void addAssociatedPart(Part part)
         {
@@ -93,18 +126,19 @@ namespace C968FinalProject
 
         }
 
-        /*// FIXME: is a default constructor necessary?
-        // default constructor
+        // Default constructor
         public Product()
         {
 
-        }*/
+        }
 
-        // constructor containing all properties
-        public Product(BindingList<Part> associatedPart, int productID, string name, decimal price, int inStock, int min, int max)
+        // Constructor containing all properties
+        public Product(BindingList<Part> associatedPart, string name, decimal price, int inStock, int min, int max)
         {
+            ++ProductsIDCounter;
+
             AssociatedPart = associatedPart;
-            ProductID = productID;
+            ProductID = ProductsIDCounter;
             Name = name;
             Price = price;
             InStock = inStock;
@@ -122,6 +156,7 @@ namespace C968FinalProject
         public int InStock { get; }
         public int Min { get; }
         public int Max { get; }
+        public int PartsIDCounter;
 
         // Default constructor
         public Part()
@@ -130,9 +165,11 @@ namespace C968FinalProject
         }
 
         // Constructor containing all properties
-        public Part(int partID, string name, decimal price, int inStock, int min, int max)
+        public Part(string name, decimal price, int inStock, int min, int max)
         {
-            PartID = partID;
+            ++PartsIDCounter;
+
+            PartID = PartsIDCounter;
             Name = name;
             Price = price;
             InStock = inStock;
@@ -148,14 +185,16 @@ namespace C968FinalProject
         // FIXME: I think I'll need something around here to allow switching of parts between in-house and outsourced - think of how to preserve part numbers
         // Can I say something like "if the part number exists, use it?" Will that data survive a move between classes? I think the object will get destroyed and recreated
         // when it moves between the two.
+        // On second thought, is preserving the part number strictly necessary? Check the rubric.
     }
 
     public class Inhouse : Part
     {
-        public int machineID;
+        public int machineID; // FIXME: Should this be a getter/setter auto-implemented property?
 
-        public Inhouse(int partID, string name, decimal price, int inStock, int min, int max, int machineID)
-        : base(partID, name, price, inStock, min, max)
+        public Inhouse(string name, decimal price, int inStock, int min, int max, int machineID)
+        : base(name, price, inStock, min, max)
+            // FIXME: Removed the partID parameter since I removed it from the Part constructor. Is that correct?
         {
             MachineID = machineID;
         }
@@ -185,10 +224,11 @@ namespace C968FinalProject
 
     public class Outsourced : Part
     {
-        public string companyName;
+        public string companyName; // FIXME: Should this be a getter/setter auto-implemented property?
 
-        public Outsourced(int partID, string name, decimal price, int inStock, int min, int max, string companyName)
-        : base(partID, name, price, inStock, min, max)
+        public Outsourced(string name, decimal price, int inStock, int min, int max, string companyName)
+        : base(name, price, inStock, min, max)
+            // FIXME: Removed the partID parameter since I removed it from the Part constructor. Is that right?
         {
             CompanyName = companyName;
         }
