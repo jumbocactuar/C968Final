@@ -36,9 +36,10 @@ namespace C968FinalProject
 
             Products.AllowEdit = true; // FIXME: Is this necessary?
             
-            // Add a couple of parts to the list.
-            //listOfParts.Add(new Part("Widget", 1234));
-            //listOfParts.Add(new Part("Gadget", 5647));
+            // FIXME: How do I list an associatedPart as an argument?
+            Products.Add(new Product(1, "Engine", 3215.96M, 2, 1, 5));
+            Products.Add(new Product(2, "Brake Assembly", 444.18M, 8, 5, 20));
+
         }
 
         public void InitializePartsList()
@@ -49,12 +50,16 @@ namespace C968FinalProject
             AllParts.AllowNew = true;
 
             AllParts.AllowEdit = true;
+
+            AllParts.Add(new Inhouse("Piston", 113.24M, 6, 5, 25, 528491));
+            AllParts.Add(new Outsourced("Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
+            AllParts.Add(new Inhouse("Caliper", 233.41M, 6, 4, 25, 24601));
+            AllParts.Add(new Outsourced("Rotor", 98.62M, 4, 2, 10, "OCP"));
         }
 
         public void addProduct(Product product)
         {
             Products.Add(product);
-            //product = new Product(); // textBox1.Text, int.Parse(textBox2.Text)...
             // FIXME: Upon clicking the Add Product button, a new Product object is created using the arguments
             // supplied in the textboxes on the Add Product form. That object is then passed as an argument to
             // addProduct(), so be sure to call it when you click the Add Product button.
@@ -71,7 +76,7 @@ namespace C968FinalProject
 
         public Product lookupProduct(int q)
         {
-
+            // FIXME: This is going to be some LINQ stuff, I bet.
         }
 
         public void updateProduct(int q, Product p)
@@ -91,7 +96,7 @@ namespace C968FinalProject
 
         public Part lookupPart(int q)
         {
-
+            // FIXME: This is going to be some LINQ stuff, I bet.
         }
 
         public void updatePart(int q, Part p)
@@ -113,17 +118,18 @@ namespace C968FinalProject
 
         public void addAssociatedPart(Part part)
         {
-
+            AssociatedPart.Add(part);
         }
 
         public bool removeAssociatedPart(int p)
         {
-
+            AssociatedPart.RemoveAt(p);
+            //FIXME: Using RemoveAt because I apparently only have an int (presumably the part's index) to work with.
         }
 
         public Part lookupAssociatedPart(int p)
         {
-
+            // FIXME: This is going to be some LINQ stuff, I bet.
         }
 
         // Default constructor
@@ -177,7 +183,7 @@ namespace C968FinalProject
             Max = max;
         }
 
-        public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
+        public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price:C}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
 
         // FIXME: The example has an abstract method used by the derived classes here--is it necessary?
         // Is this good? Is this necessary?
