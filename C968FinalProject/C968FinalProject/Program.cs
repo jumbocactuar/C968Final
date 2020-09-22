@@ -24,8 +24,8 @@ namespace C968FinalProject
 
     public class Inventory
     {
-        public BindingList<Product> Products { get; }
-        public BindingList<Part> AllParts { get; } // FIXME: do these need to get? Should I get/set in the methods below?
+        public BindingList<Product> Products;
+        public BindingList<Part> AllParts; // FIXME: do these need to get? Should I get/set in the methods below?
 
         public void InitializeProductsList()
         {
@@ -72,6 +72,7 @@ namespace C968FinalProject
             // FIXME: I think this will end up being "delete object from the binding list at index [p]"
             // This creates kind of a conundrum: the ProductID and its index are different
             // Am I going to be able to select a product in the datagridview?
+            // Or am I just dealing with 0/1 here because the return type is bool?
         }
 
         public Product lookupProduct(int q)
@@ -125,6 +126,7 @@ namespace C968FinalProject
         {
             AssociatedPart.RemoveAt(p);
             //FIXME: Using RemoveAt because I apparently only have an int (presumably the part's index) to work with.
+            // Or since I'm returning a bool, is the int I'm working with 0/1 whether or not to remove the associated part?
         }
 
         public Part lookupAssociatedPart(int p)
@@ -155,8 +157,7 @@ namespace C968FinalProject
 
     public abstract class Part
     {
-        // FIXME: Are these getter-only auto-implemented properties because this is an abstract class (and therefore should not produce objects? (is that right?))
-        public int PartID { get; }
+        public int PartID;
         public string Name { get; }
         public decimal Price { get; }
         public int InStock { get; }
@@ -196,11 +197,12 @@ namespace C968FinalProject
 
     public class Inhouse : Part
     {
-        public int machineID; // FIXME: Should this be a getter/setter auto-implemented property?
+        public int machineID;
 
         public Inhouse(string name, decimal price, int inStock, int min, int max, int machineID)
         : base(name, price, inStock, min, max)
             // FIXME: Removed the partID parameter since I removed it from the Part constructor. Is that correct?
+            // Is there any reason I couldn't make things easier on myself and move the ++PartsIDCounter here?
         {
             MachineID = machineID;
         }
@@ -230,7 +232,7 @@ namespace C968FinalProject
 
     public class Outsourced : Part
     {
-        public string companyName; // FIXME: Should this be a getter/setter auto-implemented property?
+        public string companyName;
 
         public Outsourced(string name, decimal price, int inStock, int min, int max, string companyName)
         : base(name, price, inStock, min, max)
