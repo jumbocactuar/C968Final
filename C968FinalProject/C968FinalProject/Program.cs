@@ -22,25 +22,16 @@ namespace C968FinalProject
         }
     }
 
+    public static class Counters // FIXME: Should this class be static?
+    {
+        public static int ProductsIDCounter;
+        public static int PartsIDCounter;
+    }
+
     public class Inventory
     {
         public BindingList<Product> Products;
         public BindingList<Part> AllParts; // FIXME: do these need to get? Should I get/set in the methods below?
-
-        public void InitializeProductsList()
-        {
-            // Create a new BindingList of type Product
-            Products = new BindingList<Product>();
-           
-            Products.AllowNew = true; // FIXME: Is this necessary?
-
-            Products.AllowEdit = true; // FIXME: Is this necessary?
-            
-            // FIXME: How do I list an associatedPart as an argument?
-            Products.Add(new Product(1, "Engine", 3215.96M, 2, 1, 5));
-            Products.Add(new Product(2, "Brake Assembly", 444.18M, 8, 5, 20));
-
-        }
 
         public void InitializePartsList()
         {
@@ -51,10 +42,42 @@ namespace C968FinalProject
 
             AllParts.AllowEdit = true;
 
-            AllParts.Add(new Inhouse("Piston", 113.24M, 6, 5, 25, 528491));
-            AllParts.Add(new Outsourced("Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
-            AllParts.Add(new Inhouse("Caliper", 233.41M, 6, 4, 25, 24601));
-            AllParts.Add(new Outsourced("Rotor", 98.62M, 4, 2, 10, "OCP"));
+            // Increment the PartsIDCounter to generate a new ID for each part
+            ++Counters.PartsIDCounter;
+
+            AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Piston", 113.24M, 6, 5, 25, 528491));
+
+            ++Counters.PartsIDCounter;
+
+            AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
+
+            ++Counters.PartsIDCounter;
+
+            AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Caliper", 233.41M, 6, 4, 25, 24601));
+
+            ++Counters.PartsIDCounter;
+
+            AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Rotor", 98.62M, 4, 2, 10, "OCP"));
+        }
+
+        public void InitializeProductsList()
+        {
+            // Create a new BindingList of type Product
+            Products = new BindingList<Product>();
+
+            Products.AllowNew = true; // FIXME: Is this necessary?
+
+            Products.AllowEdit = true; // FIXME: Is this necessary?
+
+            // Increment the ProductsIDCounter to generate a new ID for each product
+            ++Counters.ProductsIDCounter;
+
+            // FIXME: How do I list an associatedPart as an argument?
+            Products.Add(new Product(1, Counters.ProductsIDCounter, "Engine", 3215.96M, 2, 1, 5));
+
+            ++Counters.ProductsIDCounter;
+
+            Products.Add(new Product(2, Counters.ProductsIDCounter, "Brake Assembly", 444.18M, 8, 5, 20));
         }
 
         public void addProduct(Product product)
@@ -65,6 +88,7 @@ namespace C968FinalProject
             // addProduct(), so be sure to call it when you click the Add Product button.
             // Would this work? Product newProduct1 = new Product(textBox1.Text, etc.);
             // addProduct(newProduct1);
+            //FIXME: Remember to add a bit when creating a part to increment and assign ProductsIDCounter
         }
 
         public bool removeProduct(int p)
@@ -87,7 +111,7 @@ namespace C968FinalProject
 
         public void addPart(Part p)
         {
-
+            //FIXME: Remember to add a bit when creating a part to increment and assign PartsIDCounter
         }
 
         public bool deletePart(int q)
@@ -115,7 +139,6 @@ namespace C968FinalProject
         public int InStock { get; }
         public int Min { get; }
         public int Max { get; }
-        public int ProductsIDCounter;
 
         public void addAssociatedPart(Part part)
         {
@@ -141,12 +164,10 @@ namespace C968FinalProject
         }
 
         // Constructor containing all properties
-        public Product(BindingList<Part> associatedPart, string name, decimal price, int inStock, int min, int max)
+        public Product(BindingList<Part> associatedPart, int productID, string name, decimal price, int inStock, int min, int max)
         {
-            ++ProductsIDCounter;
-
             AssociatedPart = associatedPart;
-            ProductID = ProductsIDCounter;
+            ProductID = productID;
             Name = name;
             Price = price;
             InStock = inStock;
@@ -157,13 +178,12 @@ namespace C968FinalProject
 
     public abstract class Part
     {
-        public int PartID;
+        public int PartID { get; }
         public string Name { get; }
         public decimal Price { get; }
         public int InStock { get; }
         public int Min { get; }
         public int Max { get; }
-        public int PartsIDCounter;
 
         // Default constructor
         public Part()
@@ -172,11 +192,9 @@ namespace C968FinalProject
         }
 
         // Constructor containing all properties
-        public Part(string name, decimal price, int inStock, int min, int max)
+        public Part(int partID, string name, decimal price, int inStock, int min, int max)
         {
-            ++PartsIDCounter;
-
-            PartID = PartsIDCounter;
+            PartID = partID;
             Name = name;
             Price = price;
             InStock = inStock;
@@ -199,10 +217,8 @@ namespace C968FinalProject
     {
         public int machineID;
 
-        public Inhouse(string name, decimal price, int inStock, int min, int max, int machineID)
-        : base(name, price, inStock, min, max)
-            // FIXME: Removed the partID parameter since I removed it from the Part constructor. Is that correct?
-            // Is there any reason I couldn't make things easier on myself and move the ++PartsIDCounter here?
+        public Inhouse(int partID, string name, decimal price, int inStock, int min, int max, int machineID)
+        : base(partID, name, price, inStock, min, max)
         {
             MachineID = machineID;
         }
@@ -234,9 +250,8 @@ namespace C968FinalProject
     {
         public string companyName;
 
-        public Outsourced(string name, decimal price, int inStock, int min, int max, string companyName)
-        : base(name, price, inStock, min, max)
-            // FIXME: Removed the partID parameter since I removed it from the Part constructor. Is that right?
+        public Outsourced(int partID, string name, decimal price, int inStock, int min, int max, string companyName)
+        : base(partID, name, price, inStock, min, max)
         {
             CompanyName = companyName;
         }
