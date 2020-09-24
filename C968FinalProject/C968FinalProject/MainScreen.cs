@@ -16,12 +16,13 @@ namespace C968FinalProject
         public mainScreenForm()
         {
             InitializeComponent();
+            partsDataGridView.DataSource = Inventory.AllParts;
         }
 
-        /*private void partsDataGridView_Load(object sender, EventArgs e)
+        private void partsDataGridView_Load(object sender, EventArgs e)
         {
 
-        }*/
+        }
 
         private void partsAddButton_Click(object sender, EventArgs e)
         {
@@ -77,6 +78,5 @@ namespace C968FinalProject
             practiceForm f = new practiceForm();
             f.Show();
         }
-
     }
 }

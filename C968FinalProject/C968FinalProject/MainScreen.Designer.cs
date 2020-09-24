@@ -43,19 +43,7 @@
             this.productsSearchButton = new System.Windows.Forms.Button();
             this.productsSearchTextBox = new System.Windows.Forms.TextBox();
             this.productsDataGridView = new System.Windows.Forms.DataGridView();
-            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partsDataGridView = new System.Windows.Forms.DataGridView();
-            this.partID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.practiceFormButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsDataGridView)).BeginInit();
@@ -212,13 +200,6 @@
             // productsDataGridView
             // 
             this.productsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productID,
-            this.productName,
-            this.productInventory,
-            this.productPrice,
-            this.productMin,
-            this.productMax});
             this.productsDataGridView.Location = new System.Drawing.Point(896, 185);
             this.productsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.productsDataGridView.Name = "productsDataGridView";
@@ -226,106 +207,15 @@
             this.productsDataGridView.Size = new System.Drawing.Size(800, 369);
             this.productsDataGridView.TabIndex = 14;
             // 
-            // productID
-            // 
-            this.productID.HeaderText = "Product ID";
-            this.productID.MinimumWidth = 6;
-            this.productID.Name = "productID";
-            this.productID.Width = 125;
-            // 
-            // productName
-            // 
-            this.productName.HeaderText = "Name";
-            this.productName.MinimumWidth = 6;
-            this.productName.Name = "productName";
-            this.productName.Width = 125;
-            // 
-            // productInventory
-            // 
-            this.productInventory.HeaderText = "Inventory";
-            this.productInventory.MinimumWidth = 6;
-            this.productInventory.Name = "productInventory";
-            this.productInventory.Width = 125;
-            // 
-            // productPrice
-            // 
-            this.productPrice.HeaderText = "Price";
-            this.productPrice.MinimumWidth = 6;
-            this.productPrice.Name = "productPrice";
-            this.productPrice.Width = 125;
-            // 
-            // productMin
-            // 
-            this.productMin.HeaderText = "Min";
-            this.productMin.MinimumWidth = 6;
-            this.productMin.Name = "productMin";
-            this.productMin.Width = 125;
-            // 
-            // productMax
-            // 
-            this.productMax.HeaderText = "Max";
-            this.productMax.MinimumWidth = 6;
-            this.productMax.Name = "productMax";
-            this.productMax.Width = 125;
-            // 
             // partsDataGridView
             // 
             this.partsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.partsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.partID,
-            this.partName,
-            this.partInventory,
-            this.partPrice,
-            this.partMin,
-            this.partMax});
             this.partsDataGridView.Location = new System.Drawing.Point(16, 185);
             this.partsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.partsDataGridView.Name = "partsDataGridView";
             this.partsDataGridView.RowHeadersWidth = 51;
             this.partsDataGridView.Size = new System.Drawing.Size(800, 369);
             this.partsDataGridView.TabIndex = 15;
-            // 
-            // partID
-            // 
-            this.partID.HeaderText = "Part ID";
-            this.partID.MinimumWidth = 6;
-            this.partID.Name = "partID";
-            this.partID.Width = 125;
-            // 
-            // partName
-            // 
-            this.partName.HeaderText = "Name";
-            this.partName.MinimumWidth = 6;
-            this.partName.Name = "partName";
-            this.partName.Width = 125;
-            // 
-            // partInventory
-            // 
-            this.partInventory.HeaderText = "Inventory";
-            this.partInventory.MinimumWidth = 6;
-            this.partInventory.Name = "partInventory";
-            this.partInventory.Width = 125;
-            // 
-            // partPrice
-            // 
-            this.partPrice.HeaderText = "Price";
-            this.partPrice.MinimumWidth = 6;
-            this.partPrice.Name = "partPrice";
-            this.partPrice.Width = 125;
-            // 
-            // partMin
-            // 
-            this.partMin.HeaderText = "Min";
-            this.partMin.MinimumWidth = 6;
-            this.partMin.Name = "partMin";
-            this.partMin.Width = 125;
-            // 
-            // partMax
-            // 
-            this.partMax.HeaderText = "Max";
-            this.partMax.MinimumWidth = 6;
-            this.partMax.Name = "partMax";
-            this.partMax.Width = 125;
             // 
             // practiceFormButton
             // 
@@ -388,18 +278,6 @@
         private System.Windows.Forms.TextBox productsSearchTextBox;
         private System.Windows.Forms.DataGridView productsDataGridView;
         private System.Windows.Forms.DataGridView partsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productInventory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productMin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productMax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partInventory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partMin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partMax;
         private System.Windows.Forms.Button practiceFormButton;
     }
 }

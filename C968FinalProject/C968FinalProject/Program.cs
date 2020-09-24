@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
-// FIXME: Does System.ComponentModel need to be in all the files?
+
 namespace C968FinalProject
 {
     static class Program
@@ -16,6 +16,26 @@ namespace C968FinalProject
         [STAThread]
         static void Main()
         {
+            // Initialize the parts list
+            ++Counters.PartsIDCounter;
+
+            Inventory.AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Piston", 113.24M, 6, 5, 25, 528491));
+
+            ++Counters.PartsIDCounter;
+
+            Inventory.AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
+
+            ++Counters.PartsIDCounter;
+
+            Inventory.AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Caliper", 233.41M, 6, 4, 25, 24601));
+
+            ++Counters.PartsIDCounter;
+
+            Inventory.AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Rotor", 98.62M, 4, 2, 10, "OCP"));
+
+           // Inhouse j = new Inhouse(Counters.PartsIDCounter, "Derp", 5.00M, 2, 1, 3, 400);
+            //Inventory.addPart(j);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainScreenForm());
@@ -30,44 +50,12 @@ namespace C968FinalProject
 
     public class Inventory
     {
-        public BindingList<Product> Products;
-        public BindingList<Part> AllParts; // FIXME: do these need to get? Should I get/set in the methods below?
+        public static BindingList<Product> Products = new BindingList<Product>();
+        public static BindingList<Part> AllParts = new BindingList<Part>();
 
-        public void InitializePartsList()
+        // FIXME: Init products list needs to go, figure out how to list an associated part as an argument
+        /*public void InitializeProductsList()
         {
-            // Create a new BindingList of type Part
-            AllParts = new BindingList<Part>();
-
-            AllParts.AllowNew = true;
-
-            AllParts.AllowEdit = true;
-
-            // Increment the PartsIDCounter to generate a new ID for each part
-            ++Counters.PartsIDCounter;
-
-            AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Piston", 113.24M, 6, 5, 25, 528491));
-
-            ++Counters.PartsIDCounter;
-
-            AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
-
-            ++Counters.PartsIDCounter;
-
-            AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Caliper", 233.41M, 6, 4, 25, 24601));
-
-            ++Counters.PartsIDCounter;
-
-            AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Rotor", 98.62M, 4, 2, 10, "OCP"));
-        }
-
-        public void InitializeProductsList()
-        {
-            // Create a new BindingList of type Product
-            Products = new BindingList<Product>();
-
-            Products.AllowNew = true; // FIXME: Is this necessary?
-
-            Products.AllowEdit = true; // FIXME: Is this necessary?
 
             // Increment the ProductsIDCounter to generate a new ID for each product
             ++Counters.ProductsIDCounter;
@@ -78,10 +66,12 @@ namespace C968FinalProject
             ++Counters.ProductsIDCounter;
 
             Products.Add(new Product(2, Counters.ProductsIDCounter, "Brake Assembly", 444.18M, 8, 5, 20));
-        }
+        }*/
 
         public void addProduct(Product product)
         {
+            ++Counters.ProductsIDCounter;
+
             Products.Add(product);
             // FIXME: Upon clicking the Add Product button, a new Product object is created using the arguments
             // supplied in the textboxes on the Add Product form. That object is then passed as an argument to
@@ -91,18 +81,18 @@ namespace C968FinalProject
             //FIXME: Remember to add a bit when creating a part to increment and assign ProductsIDCounter
         }
 
-        public bool removeProduct(int p)
+        /*public bool removeProduct(int p)
         {
             // FIXME: I think this will end up being "delete object from the binding list at index [p]"
             // This creates kind of a conundrum: the ProductID and its index are different
             // Am I going to be able to select a product in the datagridview?
             // Or am I just dealing with 0/1 here because the return type is bool?
-        }
+        }*/
 
-        public Product lookupProduct(int q)
+        /*public Product lookupProduct(int q)
         {
             // FIXME: This is going to be some LINQ stuff, I bet.
-        }
+        }*/
 
         public void updateProduct(int q, Product p)
         {
@@ -111,10 +101,15 @@ namespace C968FinalProject
 
         public void addPart(Part p)
         {
+            Counters.PartsIDCounter++;
+
+            AllParts.Add(p);
+
             //FIXME: Remember to add a bit when creating a part to increment and assign PartsIDCounter
+            // Calling addPart doesn't seem to increment the counter
         }
 
-        public bool deletePart(int q)
+        /*public bool deletePart(int q)
         {
 
         }
@@ -127,13 +122,13 @@ namespace C968FinalProject
         public void updatePart(int q, Part p)
         {
 
-        }
+        }*/
     }
 
     public class Product
     {
         public BindingList<Part> AssociatedPart { get; } // FIXME: Do I need to be "get"ing here?
-        public int ProductID { get; }
+        public int ProductID { get; } // FIXME: Should all these be "set"ing, too?
         public string Name { get; }
         public decimal Price { get; }
         public int InStock { get; }
@@ -145,7 +140,7 @@ namespace C968FinalProject
             AssociatedPart.Add(part);
         }
 
-        public bool removeAssociatedPart(int p)
+        /*public bool removeAssociatedPart(int p)
         {
             AssociatedPart.RemoveAt(p);
             //FIXME: Using RemoveAt because I apparently only have an int (presumably the part's index) to work with.
@@ -155,7 +150,7 @@ namespace C968FinalProject
         public Part lookupAssociatedPart(int p)
         {
             // FIXME: This is going to be some LINQ stuff, I bet.
-        }
+        }*/
 
         // Default constructor
         public Product()
