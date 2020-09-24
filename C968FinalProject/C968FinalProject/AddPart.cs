@@ -16,5 +16,21 @@ namespace C968FinalProject
         {
             InitializeComponent();
         }
+
+        private void addPartInhouseRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender == addPartInhouseRadioButton)
+            {
+                addPartMachineIDLabel.Show();
+            }
+        }
+
+        private void addPartOutsourcedRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender == addPartOutsourcedRadioButton)
+            {
+                addPartCompanyNameLabel.Show();
+            }
+        }
     }
 }
