@@ -17,24 +17,17 @@ namespace C968FinalProject
         static void Main()
         {
             // Initialize the parts list
-            ++Counters.PartsIDCounter;
+            Inhouse a = new Inhouse(Counters.PartsIDCounter, "Piston", 113.24M, 6, 5, 25, 528491);
+            Inventory.addPart(a);
 
-            Inventory.AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Piston", 113.24M, 6, 5, 25, 528491));
+            Outsourced b = new Outsourced(Counters.PartsIDCounter, "Crankshaft", 433.67M, 10, 5, 20, "BiffCo");
+            Inventory.addPart(b);
 
-            ++Counters.PartsIDCounter;
+            Inhouse c = new Inhouse(Counters.PartsIDCounter, "Caliper", 233.41M, 6, 4, 25, 24601);
+            Inventory.addPart(c);
 
-            Inventory.AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Crankshaft", 433.67M, 10, 5, 20, "BiffCo"));
-
-            ++Counters.PartsIDCounter;
-
-            Inventory.AllParts.Add(new Inhouse(Counters.PartsIDCounter, "Caliper", 233.41M, 6, 4, 25, 24601));
-
-            ++Counters.PartsIDCounter;
-
-            Inventory.AllParts.Add(new Outsourced(Counters.PartsIDCounter, "Rotor", 98.62M, 4, 2, 10, "OCP"));
-
-           // Inhouse j = new Inhouse(Counters.PartsIDCounter, "Derp", 5.00M, 2, 1, 3, 400);
-            //Inventory.addPart(j);
+            Outsourced d = new Outsourced(Counters.PartsIDCounter, "Rotor", 98.62M, 4, 2, 10, "OCP");
+            Inventory.addPart(d);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -68,11 +61,13 @@ namespace C968FinalProject
             Products.Add(new Product(2, Counters.ProductsIDCounter, "Brake Assembly", 444.18M, 8, 5, 20));
         }*/
 
-        public void addProduct(Product product)
+        public static void addProduct(Product product)
         {
-            ++Counters.ProductsIDCounter;
+            product.ProductID++;
 
             Products.Add(product);
+
+            Counters.ProductsIDCounter++;
             // FIXME: Upon clicking the Add Product button, a new Product object is created using the arguments
             // supplied in the textboxes on the Add Product form. That object is then passed as an argument to
             // addProduct(), so be sure to call it when you click the Add Product button.
@@ -96,44 +91,43 @@ namespace C968FinalProject
 
         public void updateProduct(int q, Product p)
         {
-
+            // FIXME: Implementation is at 13:37 in the webinar
         }
 
-        public void addPart(Part p)
+        public static void addPart(Part part)
         {
+            part.PartID++;
+
+            AllParts.Add(part);
+
             Counters.PartsIDCounter++;
-
-            AllParts.Add(p);
-
-            //FIXME: Remember to add a bit when creating a part to increment and assign PartsIDCounter
-            // Calling addPart doesn't seem to increment the counter
         }
 
         /*public bool deletePart(int q)
         {
 
-        }
+        }*/
 
-        public Part lookupPart(int q)
+        /*public Part lookupPart(int q)
         {
             // FIXME: This is going to be some LINQ stuff, I bet.
         }
-
+        */
         public void updatePart(int q, Part p)
         {
-
-        }*/
+            // FIXME: Implementation is at 13:37 in the webinar
+        }
     }
 
     public class Product
     {
-        public BindingList<Part> AssociatedPart { get; } // FIXME: Do I need to be "get"ing here?
-        public int ProductID { get; } // FIXME: Should all these be "set"ing, too?
-        public string Name { get; }
-        public decimal Price { get; }
-        public int InStock { get; }
-        public int Min { get; }
-        public int Max { get; }
+        public BindingList<Part> AssociatedPart; // FIXME: Do I need to be "get"ing here?
+        public int ProductID { get; set; } // FIXME: Should all these be "set"ing, too?
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int InStock { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
 
         public void addAssociatedPart(Part part)
         {
@@ -173,7 +167,7 @@ namespace C968FinalProject
 
     public abstract class Part
     {
-        public int PartID { get; }
+        public int PartID { get; set; }
         public string Name { get; }
         public decimal Price { get; }
         public int InStock { get; }
