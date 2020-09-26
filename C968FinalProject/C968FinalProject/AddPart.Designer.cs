@@ -63,6 +63,7 @@
             // addPartInhouseRadioButton
             // 
             this.addPartInhouseRadioButton.AutoSize = true;
+            this.addPartInhouseRadioButton.Checked = true;
             this.addPartInhouseRadioButton.Location = new System.Drawing.Point(124, 13);
             this.addPartInhouseRadioButton.Name = "addPartInhouseRadioButton";
             this.addPartInhouseRadioButton.Size = new System.Drawing.Size(68, 17);
@@ -79,7 +80,6 @@
             this.addPartOutsourcedRadioButton.Name = "addPartOutsourcedRadioButton";
             this.addPartOutsourcedRadioButton.Size = new System.Drawing.Size(80, 17);
             this.addPartOutsourcedRadioButton.TabIndex = 2;
-            this.addPartOutsourcedRadioButton.TabStop = true;
             this.addPartOutsourcedRadioButton.Text = "Outsourced";
             this.addPartOutsourcedRadioButton.UseVisualStyleBackColor = true;
             this.addPartOutsourcedRadioButton.CheckedChanged += new System.EventHandler(this.addPartOutsourcedRadioButton_CheckedChanged);
@@ -88,6 +88,7 @@
             // 
             this.addPartIDTextBox.Location = new System.Drawing.Point(124, 69);
             this.addPartIDTextBox.Name = "addPartIDTextBox";
+            this.addPartIDTextBox.ReadOnly = true;
             this.addPartIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.addPartIDTextBox.TabIndex = 3;
             // 
@@ -204,6 +205,7 @@
             this.addPartSaveButton.TabIndex = 17;
             this.addPartSaveButton.Text = "Save";
             this.addPartSaveButton.UseVisualStyleBackColor = true;
+            this.addPartSaveButton.Click += new System.EventHandler(this.addPartSaveButton_Click);
             // 
             // addPartCancelButton
             // 
@@ -213,11 +215,12 @@
             this.addPartCancelButton.TabIndex = 18;
             this.addPartCancelButton.Text = "Cancel";
             this.addPartCancelButton.UseVisualStyleBackColor = true;
+            this.addPartCancelButton.Click += new System.EventHandler(this.addPartCancelButton_Click);
             // 
             // addPartCompanyNameLabel
             // 
             this.addPartCompanyNameLabel.AutoSize = true;
-            this.addPartCompanyNameLabel.Location = new System.Drawing.Point(36, 292);
+            this.addPartCompanyNameLabel.Location = new System.Drawing.Point(36, 279);
             this.addPartCompanyNameLabel.Name = "addPartCompanyNameLabel";
             this.addPartCompanyNameLabel.Size = new System.Drawing.Size(82, 13);
             this.addPartCompanyNameLabel.TabIndex = 20;
@@ -250,6 +253,7 @@
             this.Controls.Add(this.addPartFormLabel);
             this.Name = "addPartForm";
             this.Text = "Add Part";
+            this.Load += new System.EventHandler(this.addPartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
