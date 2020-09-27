@@ -17,6 +17,7 @@ namespace C968FinalProject
         {
             InitializeComponent();
             partsDataGridView.DataSource = Inventory.AllParts;
+            productsDataGridView.DataSource = Inventory.Products;
         }
 
         private void partsDataGridView_Load(object sender, EventArgs e)
@@ -70,13 +71,6 @@ namespace C968FinalProject
         private void programExitButton_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        //FIXME: Delete this before submission
-        private void practiceFormButton_Click(object sender, EventArgs e)
-        {
-            practiceForm f = new practiceForm();
-            f.Show();
         }
     }
 }

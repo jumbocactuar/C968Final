@@ -44,7 +44,6 @@
             this.productsSearchTextBox = new System.Windows.Forms.TextBox();
             this.productsDataGridView = new System.Windows.Forms.DataGridView();
             this.partsDataGridView = new System.Windows.Forms.DataGridView();
-            this.practiceFormButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -217,23 +216,11 @@
             this.partsDataGridView.Size = new System.Drawing.Size(800, 369);
             this.partsDataGridView.TabIndex = 15;
             // 
-            // practiceFormButton
-            // 
-            this.practiceFormButton.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.practiceFormButton.Location = new System.Drawing.Point(451, 12);
-            this.practiceFormButton.Name = "practiceFormButton";
-            this.practiceFormButton.Size = new System.Drawing.Size(365, 81);
-            this.practiceFormButton.TabIndex = 16;
-            this.practiceFormButton.Text = "Practice Form";
-            this.practiceFormButton.UseVisualStyleBackColor = false;
-            this.practiceFormButton.Click += new System.EventHandler(this.practiceFormButton_Click);
-            // 
             // mainScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1712, 690);
-            this.Controls.Add(this.practiceFormButton);
             this.Controls.Add(this.partsDataGridView);
             this.Controls.Add(this.productsDataGridView);
             this.Controls.Add(this.productsSearchTextBox);
@@ -278,7 +265,6 @@
         private System.Windows.Forms.TextBox productsSearchTextBox;
         private System.Windows.Forms.DataGridView productsDataGridView;
         private System.Windows.Forms.DataGridView partsDataGridView;
-        private System.Windows.Forms.Button practiceFormButton;
     }
 }
 

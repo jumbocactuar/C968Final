@@ -40,6 +40,7 @@ namespace C968FinalProject
             }
         }
 
+        // FIXME: The Save button needs to be enabled/disabled depending on whether the fields are filled
         private void addPartSaveButton_Click(object sender, EventArgs e)
         {
             // Convert strings to appropriate types for constructor input
@@ -65,12 +66,12 @@ namespace C968FinalProject
             }
 
             // Close the Add Part form
-            DestroyHandle();
+            Close();
         }
 
         private void addPartCancelButton_Click(object sender, EventArgs e)
         {
-            DestroyHandle();
+            Close();
         }
     }
 }
