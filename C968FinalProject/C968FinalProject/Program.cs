@@ -41,7 +41,7 @@ namespace C968FinalProject
         public static int PartsIDCounter;
     }
 
-    public class Inventory
+    public class Inventory // FIXME: Should this whole class be static? Just the methods/properties?
     {
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
@@ -89,7 +89,7 @@ namespace C968FinalProject
             // FIXME: This is going to be some LINQ stuff, I bet.
         }*/
 
-        public void updateProduct(int q, Product p)
+        public static void updateProduct(int q, Product p)
         {
             // FIXME: Implementation is at 13:37 in the webinar
         }
@@ -113,7 +113,7 @@ namespace C968FinalProject
             // FIXME: This is going to be some LINQ stuff, I bet.
         }
         */
-        public void updatePart(int q, Part p)
+        public static void updatePart(int q, Part p)
         {
             // FIXME: Implementation is at 13:37 in the webinar
         }

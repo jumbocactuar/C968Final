@@ -44,23 +44,22 @@ namespace C968FinalProject
         {
             // Convert strings to appropriate types for constructor input
             // FIXME:  can this go in the section for the Price textbox? string temp = $"{addPartPriceTextBox.Text:C2}";
-            decimal decPrice = decimal.Parse(addPartPriceTextBox.Text);
-            int intInventory = int.Parse(addPartInventoryTextBox.Text);
-            int intMin = int.Parse(addPartMinTextBox.Text);
-            int intMax = int.Parse(addPartMaxTextBox.Text);
-            int intMachineID = int.Parse(addPartSourceTextBox.Text);
+            decimal price = decimal.Parse(addPartPriceTextBox.Text);
+            int inventory = int.Parse(addPartInventoryTextBox.Text);
+            int min = int.Parse(addPartMinTextBox.Text);
+            int max = int.Parse(addPartMaxTextBox.Text);
 
             // Add the appropriate type part to the AllParts BindingList
             if (addPartInhouseRadioButton.Checked == true)
             {
-                Part p = new Inhouse(Counters.PartsIDCounter, addPartNameTextBox.Text, decPrice, intInventory, intMin, intMax, intMachineID);
+                Part p = new Inhouse(Counters.PartsIDCounter, addPartNameTextBox.Text, price, inventory, min, max, int.Parse(addPartSourceTextBox.Text));
 
                 Inventory.addPart(p);
             }
 
             else if (addPartOutsourcedRadioButton.Checked == true)
             {
-                Part p = new Outsourced(Counters.PartsIDCounter, addPartNameTextBox.Text, decPrice, intInventory, intMin, intMax, addPartSourceTextBox.Text);
+                Part p = new Outsourced(Counters.PartsIDCounter, addPartNameTextBox.Text, price, inventory, min, max, addPartSourceTextBox.Text);
 
                 Inventory.addPart(p);
             }
