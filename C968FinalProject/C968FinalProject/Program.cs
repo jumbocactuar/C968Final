@@ -45,6 +45,7 @@ namespace C968FinalProject
     {
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
+        public static int CurrentIndex { get; set; }
 
         // FIXME: Init products list needs to go, figure out how to list an associated part as an argument
         /*public void InitializeProductsList()
@@ -73,7 +74,6 @@ namespace C968FinalProject
             // addProduct(), so be sure to call it when you click the Add Product button.
             // Would this work? Product newProduct1 = new Product(textBox1.Text, etc.);
             // addProduct(newProduct1);
-            //FIXME: Remember to add a bit when creating a part to increment and assign ProductsIDCounter
         }
 
         /*public bool removeProduct(int p)

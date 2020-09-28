@@ -115,6 +115,7 @@
             this.addProductMaxTextBox.Name = "addProductMaxTextBox";
             this.addProductMaxTextBox.Size = new System.Drawing.Size(60, 20);
             this.addProductMaxTextBox.TabIndex = 21;
+            this.addProductMaxTextBox.TextChanged += new System.EventHandler(this.addProductMaxTextBox_TextChanged);
             // 
             // addProductMinTextBox
             // 
@@ -122,6 +123,7 @@
             this.addProductMinTextBox.Name = "addProductMinTextBox";
             this.addProductMinTextBox.Size = new System.Drawing.Size(60, 20);
             this.addProductMinTextBox.TabIndex = 20;
+            this.addProductMinTextBox.TextChanged += new System.EventHandler(this.addProductMinTextBox_TextChanged);
             // 
             // addProductPriceTextBox
             // 
@@ -129,6 +131,7 @@
             this.addProductPriceTextBox.Name = "addProductPriceTextBox";
             this.addProductPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.addProductPriceTextBox.TabIndex = 19;
+            this.addProductPriceTextBox.TextChanged += new System.EventHandler(this.addProductPriceTextBox_TextChanged);
             // 
             // addProductInventoryTextBox
             // 
@@ -136,6 +139,7 @@
             this.addProductInventoryTextBox.Name = "addProductInventoryTextBox";
             this.addProductInventoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.addProductInventoryTextBox.TabIndex = 18;
+            this.addProductInventoryTextBox.TextChanged += new System.EventHandler(this.addProductInventoryTextBox_TextChanged);
             // 
             // addProductNameTextBox
             // 
@@ -157,7 +161,7 @@
             // 
             this.candidatePartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.candidatePartsDataGridView.Location = new System.Drawing.Point(331, 83);
-            this.candidatePartsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.candidatePartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.candidatePartsDataGridView.Name = "candidatePartsDataGridView";
             this.candidatePartsDataGridView.RowHeadersWidth = 51;
             this.candidatePartsDataGridView.RowTemplate.Height = 24;
@@ -168,7 +172,7 @@
             // 
             this.associatedPartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.associatedPartsDataGridView.Location = new System.Drawing.Point(331, 426);
-            this.associatedPartsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.associatedPartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.associatedPartsDataGridView.Name = "associatedPartsDataGridView";
             this.associatedPartsDataGridView.RowHeadersWidth = 51;
             this.associatedPartsDataGridView.RowTemplate.Height = 24;
@@ -209,7 +213,7 @@
             // candidatePartSearchButton
             // 
             this.candidatePartSearchButton.Location = new System.Drawing.Point(584, 37);
-            this.candidatePartSearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.candidatePartSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.candidatePartSearchButton.Name = "candidatePartSearchButton";
             this.candidatePartSearchButton.Size = new System.Drawing.Size(75, 23);
             this.candidatePartSearchButton.TabIndex = 33;
@@ -219,7 +223,7 @@
             // candidatePartSearchTextBox
             // 
             this.candidatePartSearchTextBox.Location = new System.Drawing.Point(680, 40);
-            this.candidatePartSearchTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.candidatePartSearchTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.candidatePartSearchTextBox.Name = "candidatePartSearchTextBox";
             this.candidatePartSearchTextBox.Size = new System.Drawing.Size(216, 20);
             this.candidatePartSearchTextBox.TabIndex = 34;
@@ -227,7 +231,7 @@
             // candidatePartAddButton
             // 
             this.candidatePartAddButton.Location = new System.Drawing.Point(856, 332);
-            this.candidatePartAddButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.candidatePartAddButton.Margin = new System.Windows.Forms.Padding(2);
             this.candidatePartAddButton.Name = "candidatePartAddButton";
             this.candidatePartAddButton.Size = new System.Drawing.Size(75, 23);
             this.candidatePartAddButton.TabIndex = 35;
@@ -237,7 +241,7 @@
             // associatedPartDeleteButton
             // 
             this.associatedPartDeleteButton.Location = new System.Drawing.Point(856, 674);
-            this.associatedPartDeleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.associatedPartDeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.associatedPartDeleteButton.Name = "associatedPartDeleteButton";
             this.associatedPartDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.associatedPartDeleteButton.TabIndex = 36;
@@ -247,7 +251,7 @@
             // addProductCancelButton
             // 
             this.addProductCancelButton.Location = new System.Drawing.Point(856, 762);
-            this.addProductCancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addProductCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.addProductCancelButton.Name = "addProductCancelButton";
             this.addProductCancelButton.Size = new System.Drawing.Size(75, 23);
             this.addProductCancelButton.TabIndex = 37;
@@ -258,7 +262,7 @@
             // addProductSaveButton
             // 
             this.addProductSaveButton.Location = new System.Drawing.Point(752, 762);
-            this.addProductSaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addProductSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.addProductSaveButton.Name = "addProductSaveButton";
             this.addProductSaveButton.Size = new System.Drawing.Size(75, 23);
             this.addProductSaveButton.TabIndex = 38;
