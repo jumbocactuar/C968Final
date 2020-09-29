@@ -16,7 +16,9 @@ namespace C968FinalProject
         public mainScreenForm()
         {
             InitializeComponent();
+            partsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             partsDataGridView.DataSource = Inventory.AllParts;
+            productsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             productsDataGridView.DataSource = Inventory.Products;
         }
 

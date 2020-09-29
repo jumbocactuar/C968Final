@@ -86,6 +86,7 @@
             // 
             // addPartIDTextBox
             // 
+            this.addPartIDTextBox.Enabled = false;
             this.addPartIDTextBox.Location = new System.Drawing.Point(124, 69);
             this.addPartIDTextBox.Name = "addPartIDTextBox";
             this.addPartIDTextBox.ReadOnly = true;

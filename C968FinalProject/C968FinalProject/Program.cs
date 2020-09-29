@@ -37,15 +37,19 @@ namespace C968FinalProject
 
     public static class Counters // FIXME: Should this class be static?
     {
-        public static int ProductsIDCounter;
-        public static int PartsIDCounter;
+        public static int ProductsIDCounter { get; set; }
+        public static int PartsIDCounter { get; set; }
+        // FIXME: Is this needed? public static int SelectedPartIndex { get; set; }
+        public static int SelectedIndex { get; set; }
+        public static int SelectedProductIndex { get; set; }
+        public static Part SelectedPartObject { get; set; }
+        public static Product SelectedProductObject { get; set; }
     }
 
     public class Inventory // FIXME: Should this whole class be static? Just the methods/properties?
     {
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
-        public static int CurrentIndex { get; set; }
 
         // FIXME: Init products list needs to go, figure out how to list an associated part as an argument
         /*public void InitializeProductsList()
@@ -55,7 +59,7 @@ namespace C968FinalProject
             ++Counters.ProductsIDCounter;
 
             // FIXME: How do I list an associatedPart as an argument?
-            Products.Add(new Product(1, Counters.ProductsIDCounter, "Engine", 3215.96M, 2, 1, 5));
+            Products.Add(new Product(AllParts[0], Counters.ProductsIDCounter, "Engine", 3215.96M, 2, 1, 5));
 
             ++Counters.ProductsIDCounter;
 
@@ -121,7 +125,7 @@ namespace C968FinalProject
 
     public class Product
     {
-        public BindingList<Part> AssociatedPart; // FIXME: Do I need to be "get"ing here?
+        public BindingList<Part> AssociatedParts { get; set; } // FIXME: Do I need to be "get"ing here?
         public int ProductID { get; set; } // FIXME: Should all these be "set"ing, too?
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -131,7 +135,7 @@ namespace C968FinalProject
 
         public void addAssociatedPart(Part part)
         {
-            AssociatedPart.Add(part);
+            AssociatedParts.Add(part);
         }
 
         /*public bool removeAssociatedPart(int p)
@@ -155,7 +159,7 @@ namespace C968FinalProject
         // Constructor containing all properties
         public Product(BindingList<Part> associatedPart, int productID, string name, decimal price, int inStock, int min, int max)
         {
-            AssociatedPart = associatedPart;
+            AssociatedParts = associatedPart;
             ProductID = productID;
             Name = name;
             Price = price;
@@ -168,11 +172,11 @@ namespace C968FinalProject
     public abstract class Part
     {
         public int PartID { get; set; }
-        public string Name { get; }
-        public decimal Price { get; }
-        public int InStock { get; }
-        public int Min { get; }
-        public int Max { get; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int InStock { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
 
         // Default constructor
         public Part()

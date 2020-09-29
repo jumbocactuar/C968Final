@@ -23,7 +23,7 @@ namespace C968FinalProject
         {
             addPartCompanyNameLabel.Hide();
             addPartSaveButton.Enabled = false;
-
+            addPartIDTextBox.Text = $"{Counters.PartsIDCounter + 1}";
         }
 
         private void addPartInhouseRadioButton_CheckedChanged(object sender, EventArgs e)

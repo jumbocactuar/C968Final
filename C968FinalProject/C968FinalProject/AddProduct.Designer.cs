@@ -151,6 +151,7 @@
             // 
             // addProductIDTextBox
             // 
+            this.addProductIDTextBox.Enabled = false;
             this.addProductIDTextBox.Location = new System.Drawing.Point(102, 281);
             this.addProductIDTextBox.Name = "addProductIDTextBox";
             this.addProductIDTextBox.ReadOnly = true;
@@ -167,6 +168,7 @@
             this.candidatePartsDataGridView.RowTemplate.Height = 24;
             this.candidatePartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.candidatePartsDataGridView.TabIndex = 28;
+            this.candidatePartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.candidatePartsDataGridView_CellClick);
             // 
             // associatedPartsDataGridView
             // 
@@ -219,6 +221,7 @@
             this.candidatePartSearchButton.TabIndex = 33;
             this.candidatePartSearchButton.Text = "Search";
             this.candidatePartSearchButton.UseVisualStyleBackColor = true;
+            this.candidatePartSearchButton.Click += new System.EventHandler(this.candidatePartSearchButton_Click);
             // 
             // candidatePartSearchTextBox
             // 
@@ -237,6 +240,7 @@
             this.candidatePartAddButton.TabIndex = 35;
             this.candidatePartAddButton.Text = "Add";
             this.candidatePartAddButton.UseVisualStyleBackColor = true;
+            this.candidatePartAddButton.Click += new System.EventHandler(this.candidatePartAddButton_Click);
             // 
             // associatedPartDeleteButton
             // 
@@ -247,6 +251,7 @@
             this.associatedPartDeleteButton.TabIndex = 36;
             this.associatedPartDeleteButton.Text = "Delete";
             this.associatedPartDeleteButton.UseVisualStyleBackColor = true;
+            this.associatedPartDeleteButton.Click += new System.EventHandler(this.associatedPartDeleteButton_Click);
             // 
             // addProductCancelButton
             // 

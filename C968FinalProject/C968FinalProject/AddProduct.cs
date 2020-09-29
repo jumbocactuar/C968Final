@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +15,30 @@ namespace C968FinalProject
     public partial class addProductForm : Form
     {
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false, false };
+        public BindingList<Part> associatedParts = new BindingList<Part>();
         // FIXME: Can a value be displayed in a text box that is disabled? Is it preferable to set the field to read only?
 
         public addProductForm()
         {
             InitializeComponent();
+            candidatePartsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             candidatePartsDataGridView.DataSource = Inventory.AllParts;
-            //FIXME: associatedPartsDataGridView.DataSource = 
+            associatedPartsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            associatedPartsDataGridView.DataSource = associatedParts;
         }
 
         private void addProductForm_Load(object sender, EventArgs e)
         {
+            // Disable the Save button until all fields contain values
             addProductSaveButton.Enabled = false;
+            addProductIDTextBox.Text = $"{Counters.ProductsIDCounter + 1}";
         }
 
         private void candidatePartsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedIndex = candidatePartsDataGridView.CurrentCell.RowIndex;
-            //selectedIndex = e.RowIndex;
-            selectedObject = Inventory.AllParts[selectedIndex];
+            Counters.SelectedIndex = candidatePartsDataGridView.CurrentCell.RowIndex;
+
+            Counters.SelectedPartObject = Inventory.AllParts[Counters.SelectedIndex];
         }
 
         private void addProductNameTextBox_TextChanged(object sender, EventArgs e)
@@ -109,13 +116,34 @@ namespace C968FinalProject
             UpdateSaveButton();
         }
 
+        private void candidatePartAddButton_Click(object sender, EventArgs e)
+        {
+            // Add the candidate part to the associatedParts BindingList
+            associatedParts.Add(Counters.SelectedPartObject);
+        }
+
+        private void associatedPartDeleteButton_Click(object sender, EventArgs e)
+        {
+            // Select the appropriate part in associatedParts and remove it
+            Counters.SelectedIndex = associatedPartsDataGridView.CurrentCell.RowIndex;
+
+            Counters.SelectedPartObject = associatedParts[Counters.SelectedIndex];
+            
+            associatedParts.Remove(Counters.SelectedPartObject);
+        }
+
         private void addProductSaveButton_Click(object sender, EventArgs e)
         {
-            // FIXME: Convert strings to appropriate types for constructor input
+            // Convert strings to appropriate types for constructor input
+            decimal price = decimal.Parse(addProductPriceTextBox.Text);
+            int inventory = int.Parse(addProductInventoryTextBox.Text);
+            int min = int.Parse(addProductMinTextBox.Text);
+            int max = int.Parse(addProductMaxTextBox.Text);
 
+            // Add the product to the Products BindingList
+            Product p = new Product(associatedParts, Counters.ProductsIDCounter, addProductNameTextBox.Text, price, inventory, min, max);
 
-            // FIXME: Add the product to the Products BindingList
-
+            Inventory.addProduct(p);
 
             // Close the Add Product form
             Close();
@@ -124,6 +152,11 @@ namespace C968FinalProject
         private void addProductCancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void candidatePartSearchButton_Click(object sender, EventArgs e)
+        {
+            // FIXME: Look up a part in the AllParts list
         }
 
         private void UpdateSaveButton()
