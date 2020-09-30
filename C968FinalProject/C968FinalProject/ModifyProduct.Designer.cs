@@ -64,6 +64,7 @@
             this.modifyCandidatePartAddButton.TabIndex = 55;
             this.modifyCandidatePartAddButton.Text = "Add";
             this.modifyCandidatePartAddButton.UseVisualStyleBackColor = true;
+            this.modifyCandidatePartAddButton.Click += new System.EventHandler(this.modifyCandidatePartAddButton_Click);
             // 
             // modifyCandidatePartSearchTextBox
             // 
@@ -82,6 +83,7 @@
             this.modifyCandidatePartSearchButton.TabIndex = 53;
             this.modifyCandidatePartSearchButton.Text = "Search";
             this.modifyCandidatePartSearchButton.UseVisualStyleBackColor = true;
+            this.modifyCandidatePartSearchButton.Click += new System.EventHandler(this.modifyCandidatePartSearchButton_Click);
             // 
             // modifyAssociatedPartsLabel
             // 
@@ -116,25 +118,35 @@
             // 
             // modifyAssociatedPartsDataGridView
             // 
+            this.modifyAssociatedPartsDataGridView.AllowUserToAddRows = false;
+            this.modifyAssociatedPartsDataGridView.AllowUserToDeleteRows = false;
             this.modifyAssociatedPartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.modifyAssociatedPartsDataGridView.Location = new System.Drawing.Point(331, 427);
             this.modifyAssociatedPartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.modifyAssociatedPartsDataGridView.Name = "modifyAssociatedPartsDataGridView";
+            this.modifyAssociatedPartsDataGridView.ReadOnly = true;
+            this.modifyAssociatedPartsDataGridView.RowHeadersVisible = false;
             this.modifyAssociatedPartsDataGridView.RowHeadersWidth = 51;
             this.modifyAssociatedPartsDataGridView.RowTemplate.Height = 24;
             this.modifyAssociatedPartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.modifyAssociatedPartsDataGridView.TabIndex = 49;
+            this.modifyAssociatedPartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modifyAssociatedPartsDataGridView_CellClick);
             // 
             // modifyCandidatePartsDataGridView
             // 
+            this.modifyCandidatePartsDataGridView.AllowUserToAddRows = false;
+            this.modifyCandidatePartsDataGridView.AllowUserToDeleteRows = false;
             this.modifyCandidatePartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.modifyCandidatePartsDataGridView.Location = new System.Drawing.Point(331, 84);
             this.modifyCandidatePartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.modifyCandidatePartsDataGridView.Name = "modifyCandidatePartsDataGridView";
+            this.modifyCandidatePartsDataGridView.ReadOnly = true;
+            this.modifyCandidatePartsDataGridView.RowHeadersVisible = false;
             this.modifyCandidatePartsDataGridView.RowHeadersWidth = 51;
             this.modifyCandidatePartsDataGridView.RowTemplate.Height = 24;
             this.modifyCandidatePartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.modifyCandidatePartsDataGridView.TabIndex = 48;
+            this.modifyCandidatePartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modifyCandidatePartsDataGridView_CellClick);
             // 
             // modifyProductMaxLabel
             // 
@@ -196,6 +208,7 @@
             this.modifyProductMaxTextBox.Name = "modifyProductMaxTextBox";
             this.modifyProductMaxTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyProductMaxTextBox.TabIndex = 41;
+            this.modifyProductMaxTextBox.TextChanged += new System.EventHandler(this.modifyProductMaxTextBox_TextChanged);
             // 
             // modifyProductMinTextBox
             // 
@@ -203,6 +216,7 @@
             this.modifyProductMinTextBox.Name = "modifyProductMinTextBox";
             this.modifyProductMinTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyProductMinTextBox.TabIndex = 40;
+            this.modifyProductMinTextBox.TextChanged += new System.EventHandler(this.modifyProductMinTextBox_TextChanged);
             // 
             // modifyProductPriceTextBox
             // 
@@ -210,6 +224,7 @@
             this.modifyProductPriceTextBox.Name = "modifyProductPriceTextBox";
             this.modifyProductPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyProductPriceTextBox.TabIndex = 39;
+            this.modifyProductPriceTextBox.TextChanged += new System.EventHandler(this.modifyProductPriceTextBox_TextChanged);
             // 
             // modifyProductInventoryTextBox
             // 
@@ -217,6 +232,7 @@
             this.modifyProductInventoryTextBox.Name = "modifyProductInventoryTextBox";
             this.modifyProductInventoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyProductInventoryTextBox.TabIndex = 38;
+            this.modifyProductInventoryTextBox.TextChanged += new System.EventHandler(this.modifyProductInventoryTextBox_TextChanged);
             // 
             // modifyProductNameTextBox
             // 
@@ -224,6 +240,7 @@
             this.modifyProductNameTextBox.Name = "modifyProductNameTextBox";
             this.modifyProductNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyProductNameTextBox.TabIndex = 37;
+            this.modifyProductNameTextBox.TextChanged += new System.EventHandler(this.modifyProductNameTextBox_TextChanged);
             // 
             // modifyProductIDTextBox
             // 
@@ -243,6 +260,7 @@
             this.modifyAssociatedPartDeleteButton.TabIndex = 56;
             this.modifyAssociatedPartDeleteButton.Text = "Delete";
             this.modifyAssociatedPartDeleteButton.UseVisualStyleBackColor = true;
+            this.modifyAssociatedPartDeleteButton.Click += new System.EventHandler(this.modifyAssociatedPartDeleteButton_Click);
             // 
             // modifyProductSaveButton
             // 
@@ -253,6 +271,7 @@
             this.modifyProductSaveButton.TabIndex = 58;
             this.modifyProductSaveButton.Text = "Save";
             this.modifyProductSaveButton.UseVisualStyleBackColor = true;
+            this.modifyProductSaveButton.Click += new System.EventHandler(this.modifyProductSaveButton_Click);
             // 
             // modifyProductCancelButton
             // 
@@ -263,6 +282,7 @@
             this.modifyProductCancelButton.TabIndex = 57;
             this.modifyProductCancelButton.Text = "Cancel";
             this.modifyProductCancelButton.UseVisualStyleBackColor = true;
+            this.modifyProductCancelButton.Click += new System.EventHandler(this.modifyProductCancelButton_Click);
             // 
             // modifyProductForm
             // 

@@ -160,10 +160,14 @@
             // 
             // candidatePartsDataGridView
             // 
+            this.candidatePartsDataGridView.AllowUserToAddRows = false;
+            this.candidatePartsDataGridView.AllowUserToDeleteRows = false;
             this.candidatePartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.candidatePartsDataGridView.Location = new System.Drawing.Point(331, 83);
             this.candidatePartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.candidatePartsDataGridView.Name = "candidatePartsDataGridView";
+            this.candidatePartsDataGridView.ReadOnly = true;
+            this.candidatePartsDataGridView.RowHeadersVisible = false;
             this.candidatePartsDataGridView.RowHeadersWidth = 51;
             this.candidatePartsDataGridView.RowTemplate.Height = 24;
             this.candidatePartsDataGridView.Size = new System.Drawing.Size(600, 244);
@@ -172,10 +176,14 @@
             // 
             // associatedPartsDataGridView
             // 
+            this.associatedPartsDataGridView.AllowUserToAddRows = false;
+            this.associatedPartsDataGridView.AllowUserToDeleteRows = false;
             this.associatedPartsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.associatedPartsDataGridView.Location = new System.Drawing.Point(331, 426);
             this.associatedPartsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.associatedPartsDataGridView.Name = "associatedPartsDataGridView";
+            this.associatedPartsDataGridView.ReadOnly = true;
+            this.associatedPartsDataGridView.RowHeadersVisible = false;
             this.associatedPartsDataGridView.RowHeadersWidth = 51;
             this.associatedPartsDataGridView.RowTemplate.Height = 24;
             this.associatedPartsDataGridView.Size = new System.Drawing.Size(600, 244);

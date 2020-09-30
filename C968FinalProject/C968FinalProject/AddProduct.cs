@@ -36,9 +36,9 @@ namespace C968FinalProject
 
         private void candidatePartsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Counters.SelectedIndex = candidatePartsDataGridView.CurrentCell.RowIndex;
+            Counters.SelectedPartIndex = candidatePartsDataGridView.CurrentCell.RowIndex;
 
-            Counters.SelectedPartObject = Inventory.AllParts[Counters.SelectedIndex];
+            Counters.SelectedPartObject = Inventory.AllParts[Counters.SelectedPartIndex];
         }
 
         private void addProductNameTextBox_TextChanged(object sender, EventArgs e)
@@ -125,9 +125,9 @@ namespace C968FinalProject
         private void associatedPartDeleteButton_Click(object sender, EventArgs e)
         {
             // Select the appropriate part in associatedParts and remove it
-            Counters.SelectedIndex = associatedPartsDataGridView.CurrentCell.RowIndex;
+            Counters.SelectedPartIndex = associatedPartsDataGridView.CurrentCell.RowIndex;
 
-            Counters.SelectedPartObject = associatedParts[Counters.SelectedIndex];
+            Counters.SelectedPartObject = associatedParts[Counters.SelectedPartIndex];
             
             associatedParts.Remove(Counters.SelectedPartObject);
         }

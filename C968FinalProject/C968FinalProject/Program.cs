@@ -35,12 +35,11 @@ namespace C968FinalProject
         }
     }
 
-    public static class Counters // FIXME: Should this class be static?
+    public static class Counters
     {
         public static int ProductsIDCounter { get; set; }
         public static int PartsIDCounter { get; set; }
-        // FIXME: Is this needed? public static int SelectedPartIndex { get; set; }
-        public static int SelectedIndex { get; set; }
+        public static int SelectedPartIndex { get; set; }
         public static int SelectedProductIndex { get; set; }
         public static Part SelectedPartObject { get; set; }
         public static Product SelectedProductObject { get; set; }
@@ -51,21 +50,6 @@ namespace C968FinalProject
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
 
-        // FIXME: Init products list needs to go, figure out how to list an associated part as an argument
-        /*public void InitializeProductsList()
-        {
-
-            // Increment the ProductsIDCounter to generate a new ID for each product
-            ++Counters.ProductsIDCounter;
-
-            // FIXME: How do I list an associatedPart as an argument?
-            Products.Add(new Product(AllParts[0], Counters.ProductsIDCounter, "Engine", 3215.96M, 2, 1, 5));
-
-            ++Counters.ProductsIDCounter;
-
-            Products.Add(new Product(2, Counters.ProductsIDCounter, "Brake Assembly", 444.18M, 8, 5, 20));
-        }*/
-
         public static void addProduct(Product product)
         {
             product.ProductID++;
@@ -73,20 +57,33 @@ namespace C968FinalProject
             Products.Add(product);
 
             Counters.ProductsIDCounter++;
-            // FIXME: Upon clicking the Add Product button, a new Product object is created using the arguments
-            // supplied in the textboxes on the Add Product form. That object is then passed as an argument to
-            // addProduct(), so be sure to call it when you click the Add Product button.
-            // Would this work? Product newProduct1 = new Product(textBox1.Text, etc.);
-            // addProduct(newProduct1);
         }
 
-        /*public bool removeProduct(int p)
+        public static bool removeProduct(int p)
         {
-            // FIXME: I think this will end up being "delete object from the binding list at index [p]"
-            // This creates kind of a conundrum: the ProductID and its index are different
-            // Am I going to be able to select a product in the datagridview?
-            // Or am I just dealing with 0/1 here because the return type is bool?
-        }*/
+            // If the Product has no associated parts, remove the Product. Else, do not remove it and display a warning message.
+            if (Products[p].AssociatedParts.Count == 0)
+            {
+                try
+                {
+                    Products.RemoveAt(p);
+
+                    return true;
+                }
+
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("This product is associated with at least one part.\n\nPlease remove all associated parts before deleting the product.");
+
+                return false;
+            }
+        }
 
         /*public Product lookupProduct(int q)
         {
@@ -95,7 +92,8 @@ namespace C968FinalProject
 
         public static void updateProduct(int q, Product p)
         {
-            // FIXME: Implementation is at 13:37 in the webinar
+            // Replace the Product at index q with Product p
+            Products[q] = p;
         }
 
         public static void addPart(Part part)
@@ -107,10 +105,20 @@ namespace C968FinalProject
             Counters.PartsIDCounter++;
         }
 
-        /*public bool deletePart(int q)
+        public static bool deletePart(int q)
         {
+            try
+            {
+                AllParts.RemoveAt(q);
 
-        }*/
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         /*public Part lookupPart(int q)
         {
@@ -135,17 +143,25 @@ namespace C968FinalProject
 
         public void addAssociatedPart(Part part)
         {
-            AssociatedParts.Add(part);
+            Inventory.Products[Counters.SelectedProductIndex].AssociatedParts.Add(part);
         }
 
-        /*public bool removeAssociatedPart(int p)
+        public bool removeAssociatedPart(int p)
         {
-            AssociatedPart.RemoveAt(p);
-            //FIXME: Using RemoveAt because I apparently only have an int (presumably the part's index) to work with.
-            // Or since I'm returning a bool, is the int I'm working with 0/1 whether or not to remove the associated part?
+            try
+            {
+                Inventory.Products[Counters.SelectedProductIndex].AssociatedParts.RemoveAt(p);
+
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public Part lookupAssociatedPart(int p)
+        /*public Part lookupAssociatedPart(int p)
         {
             // FIXME: This is going to be some LINQ stuff, I bet.
         }*/
@@ -195,7 +211,7 @@ namespace C968FinalProject
             Max = max;
         }
 
-        public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price:C}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
+        /*public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price:C}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
 
         // FIXME: The example has an abstract method used by the derived classes here--is it necessary?
         // Is this good? Is this necessary?
@@ -203,7 +219,7 @@ namespace C968FinalProject
         // FIXME: I think I'll need something around here to allow switching of parts between in-house and outsourced - think of how to preserve part numbers
         // Can I say something like "if the part number exists, use it?" Will that data survive a move between classes? I think the object will get destroyed and recreated
         // when it moves between the two.
-        // On second thought, is preserving the part number strictly necessary? Check the rubric.
+        // On second thought, is preserving the part number strictly necessary? Check the rubric.*/
     }
 
     public class Inhouse : Part
@@ -234,9 +250,9 @@ namespace C968FinalProject
             }
         }
 
-        public override string PartSource() => $"{MachineID}";
+        /*public override string PartSource() => $"{MachineID}";
 
-        public override string ToString() => $"{base.ToString()}" + $"{MachineID}";
+        public override string ToString() => $"{base.ToString()}" + $"{MachineID}";*/
     }
 
     public class Outsourced : Part
@@ -253,7 +269,7 @@ namespace C968FinalProject
         {
             get
             {
-                return companyName;
+               return companyName;
             }
 
             set
@@ -267,8 +283,8 @@ namespace C968FinalProject
             }
         }
 
-        public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
+        /*public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
 
-        public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";
+        public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";*/
     }
 }

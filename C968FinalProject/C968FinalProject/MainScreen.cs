@@ -27,6 +27,20 @@ namespace C968FinalProject
 
         }
 
+        private void partsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Counters.SelectedPartIndex = partsDataGridView.CurrentCell.RowIndex;
+
+            Counters.SelectedPartObject = Inventory.AllParts[Counters.SelectedPartIndex];
+        }
+
+        private void productsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Counters.SelectedProductIndex = productsDataGridView.CurrentCell.RowIndex;
+
+            Counters.SelectedProductObject = Inventory.Products[Counters.SelectedProductIndex];
+        }
+
         private void partsAddButton_Click(object sender, EventArgs e)
         {
             addPartForm f = new addPartForm();
@@ -41,7 +55,17 @@ namespace C968FinalProject
 
         private void partsDeleteButton_Click(object sender, EventArgs e)
         {
-            //FIXME: Give this button something to do
+            string message = "Delete the selected part?";
+            string caption = "Delete";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                Inventory.deletePart(Counters.SelectedPartIndex);
+            }
         }
 
         private void productsAddButton_Click(object sender, EventArgs e)
@@ -58,7 +82,17 @@ namespace C968FinalProject
 
         private void productsDeleteButton_Click(object sender, EventArgs e)
         {
-            //FIXME: Give this button something to do
+            string message = "Delete the selected product?";
+            string caption = "Delete";
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+
+            if (result == DialogResult.OK)
+            {
+                Inventory.removeProduct(Counters.SelectedProductIndex);
+            }
         }
 
         private void partsSearchButton_Click(object sender, EventArgs e)

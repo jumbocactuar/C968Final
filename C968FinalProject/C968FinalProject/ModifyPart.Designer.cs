@@ -47,6 +47,7 @@
             this.modifyPartInhouseRadioButton = new System.Windows.Forms.RadioButton();
             this.modifyPartCancelButton = new System.Windows.Forms.Button();
             this.modifyPartSaveButton = new System.Windows.Forms.Button();
+            this.modifyPartCompanyNameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // modifyPartFormLabel
@@ -166,6 +167,7 @@
             // 
             // modifyPartIDTextBox
             // 
+            this.modifyPartIDTextBox.Enabled = false;
             this.modifyPartIDTextBox.Location = new System.Drawing.Point(127, 72);
             this.modifyPartIDTextBox.Name = "modifyPartIDTextBox";
             this.modifyPartIDTextBox.Size = new System.Drawing.Size(100, 20);
@@ -211,14 +213,24 @@
             this.modifyPartSaveButton.Text = "Save";
             this.modifyPartSaveButton.UseVisualStyleBackColor = true;
             // 
+            // modifyPartCompanyNameLabel
+            // 
+            this.modifyPartCompanyNameLabel.AutoSize = true;
+            this.modifyPartCompanyNameLabel.Location = new System.Drawing.Point(39, 282);
+            this.modifyPartCompanyNameLabel.Name = "modifyPartCompanyNameLabel";
+            this.modifyPartCompanyNameLabel.Size = new System.Drawing.Size(82, 13);
+            this.modifyPartCompanyNameLabel.TabIndex = 35;
+            this.modifyPartCompanyNameLabel.Text = "Company Name";
+            // 
             // modifyPartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 411);
+            this.Controls.Add(this.modifyPartCompanyNameLabel);
+            this.Controls.Add(this.modifyPartMachineIDLabel);
             this.Controls.Add(this.modifyPartCancelButton);
             this.Controls.Add(this.modifyPartSaveButton);
-            this.Controls.Add(this.modifyPartMachineIDLabel);
             this.Controls.Add(this.modifyPartMaxLabel);
             this.Controls.Add(this.modifyPartMinLabel);
             this.Controls.Add(this.modifyPartPriceLabel);
@@ -237,6 +249,7 @@
             this.Controls.Add(this.modifyPartFormLabel);
             this.Name = "modifyPartForm";
             this.Text = "Modify Part";
+            this.Load += new System.EventHandler(this.modifyPartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,5 +276,6 @@
         private System.Windows.Forms.RadioButton modifyPartInhouseRadioButton;
         private System.Windows.Forms.Button modifyPartCancelButton;
         private System.Windows.Forms.Button modifyPartSaveButton;
+        private System.Windows.Forms.Label modifyPartCompanyNameLabel;
     }
 }
