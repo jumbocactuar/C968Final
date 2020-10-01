@@ -209,6 +209,7 @@
             this.modifyProductMaxTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyProductMaxTextBox.TabIndex = 41;
             this.modifyProductMaxTextBox.TextChanged += new System.EventHandler(this.modifyProductMaxTextBox_TextChanged);
+            this.modifyProductMaxTextBox.Leave += new System.EventHandler(this.modifyProductMaxTextBox_Leave);
             // 
             // modifyProductMinTextBox
             // 
@@ -217,6 +218,7 @@
             this.modifyProductMinTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyProductMinTextBox.TabIndex = 40;
             this.modifyProductMinTextBox.TextChanged += new System.EventHandler(this.modifyProductMinTextBox_TextChanged);
+            this.modifyProductMinTextBox.Leave += new System.EventHandler(this.modifyProductMinTextBox_Leave);
             // 
             // modifyProductPriceTextBox
             // 
@@ -233,6 +235,7 @@
             this.modifyProductInventoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyProductInventoryTextBox.TabIndex = 38;
             this.modifyProductInventoryTextBox.TextChanged += new System.EventHandler(this.modifyProductInventoryTextBox_TextChanged);
+            this.modifyProductInventoryTextBox.Leave += new System.EventHandler(this.modifyProductInventoryTextBox_Leave);
             // 
             // modifyProductNameTextBox
             // 

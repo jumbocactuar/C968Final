@@ -108,6 +108,7 @@
             this.addPartInventoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.addPartInventoryTextBox.TabIndex = 5;
             this.addPartInventoryTextBox.TextChanged += new System.EventHandler(this.addPartInventoryTextBox_TextChanged);
+            this.addPartInventoryTextBox.Leave += new System.EventHandler(this.addPartInventoryTextBox_Leave);
             // 
             // addPartPriceTextBox
             // 
@@ -124,6 +125,7 @@
             this.addPartMinTextBox.Size = new System.Drawing.Size(60, 20);
             this.addPartMinTextBox.TabIndex = 7;
             this.addPartMinTextBox.TextChanged += new System.EventHandler(this.addPartMinTextBox_TextChanged);
+            this.addPartMinTextBox.Leave += new System.EventHandler(this.addPartMinTextBox_Leave);
             // 
             // addPartMaxTextBox
             // 
@@ -132,6 +134,7 @@
             this.addPartMaxTextBox.Size = new System.Drawing.Size(60, 20);
             this.addPartMaxTextBox.TabIndex = 8;
             this.addPartMaxTextBox.TextChanged += new System.EventHandler(this.addPartMaxTextBox_TextChanged);
+            this.addPartMaxTextBox.Leave += new System.EventHandler(this.addPartMaxTextBox_Leave);
             // 
             // addPartSourceTextBox
             // 

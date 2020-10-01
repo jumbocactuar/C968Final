@@ -83,6 +83,11 @@ namespace C968FinalProject
             UpdateSaveButton();
         }
 
+        private void modifyProductInventoryTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
+        }
+
         private void modifyProductPriceTextBox_TextChanged(object sender, EventArgs e)
         {
             if (modifyProductPriceTextBox.TextLength > 0)
@@ -113,6 +118,11 @@ namespace C968FinalProject
             UpdateSaveButton();
         }
 
+        private void modifyProductMinTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
+        }
+
         private void modifyProductMaxTextBox_TextChanged(object sender, EventArgs e)
         {
             if (modifyProductMaxTextBox.TextLength > 0)
@@ -126,6 +136,11 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+
+        private void modifyProductMaxTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
         }
 
         private void modifyCandidatePartAddButton_Click(object sender, EventArgs e)
@@ -183,6 +198,44 @@ namespace C968FinalProject
             else
             {
                 modifyProductSaveButton.Enabled = true;
+            }
+        }
+
+        private void InventoryChecker()
+        {
+            // Check whether Inventory is between Min and Max, Min < Max, and Max > Min
+            if ((modifyProductInventoryTextBox.TextLength > 0) && (modifyProductMinTextBox.TextLength > 0) && (modifyProductMaxTextBox.TextLength > 0))
+            {
+                int inv = int.Parse(modifyProductInventoryTextBox.Text);
+                int min = int.Parse(modifyProductMinTextBox.Text);
+                int max = int.Parse(modifyProductMaxTextBox.Text);
+
+                if ((inv < min) || (inv > max))
+                {
+                    MessageBox.Show("Inventory must be greater than Min and less than Max.");
+
+                    modifyProductInventoryTextBox.Clear();
+                }
+            }
+
+            if ((modifyProductMinTextBox.TextLength > 0) && (modifyProductMaxTextBox.TextLength > 0))
+            {
+                int min = int.Parse(modifyProductMinTextBox.Text);
+                int max = int.Parse(modifyProductMaxTextBox.Text);
+
+                if (min > max)
+                {
+                    MessageBox.Show("Min must be less than Max");
+
+                    modifyProductMinTextBox.Clear();
+                }
+
+                if (max < min)
+                {
+                    MessageBox.Show("Max must be greater than Min.");
+
+                    modifyProductMaxTextBox.Clear();
+                }
             }
         }
     }

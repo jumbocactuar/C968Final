@@ -127,7 +127,7 @@ namespace C968FinalProject
         */
         public static void updatePart(int q, Part p)
         {
-            // FIXME: Implementation is at 13:37 in the webinar
+            AllParts[q] = p;
         }
     }
 
@@ -211,6 +211,8 @@ namespace C968FinalProject
             Max = max;
         }
 
+        public abstract string PartSource();
+
         /*public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price:C}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
 
         // FIXME: The example has an abstract method used by the derived classes here--is it necessary?
@@ -250,9 +252,9 @@ namespace C968FinalProject
             }
         }
 
-        /*public override string PartSource() => $"{MachineID}";
+        public override string PartSource() => $"{MachineID}";
 
-        public override string ToString() => $"{base.ToString()}" + $"{MachineID}";*/
+        //public override string ToString() => $"{base.ToString()}" + $"{MachineID}";
     }
 
     public class Outsourced : Part
@@ -283,8 +285,8 @@ namespace C968FinalProject
             }
         }
 
-        /*public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
+        public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
 
-        public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";*/
+        //public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";
     }
 }

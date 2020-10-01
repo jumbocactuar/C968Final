@@ -74,6 +74,11 @@ namespace C968FinalProject
             UpdateSaveButton();
         }
 
+        private void addPartInventoryTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
+        }
+
         private void addPartPriceTextBox_TextChanged(object sender, EventArgs e)
         {
             if (addPartPriceTextBox.TextLength > 0)
@@ -104,6 +109,11 @@ namespace C968FinalProject
             UpdateSaveButton();
         }
 
+        private void addPartMinTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
+        }
+
         private void addPartMaxTextBox_TextChanged(object sender, EventArgs e)
         {
             if (addPartMaxTextBox.TextLength > 0)
@@ -117,6 +127,11 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+
+        private void addPartMaxTextBox_Leave(object sender, EventArgs e)
+        {
+            InventoryChecker();
         }
 
         private void addPartSourceTextBox_TextChanged(object sender, EventArgs e)
@@ -148,6 +163,8 @@ namespace C968FinalProject
                 Part p = new Inhouse(Counters.PartsIDCounter, addPartNameTextBox.Text, price, inventory, min, max, int.Parse(addPartSourceTextBox.Text));
 
                 Inventory.addPart(p);
+
+                Counters.SelectedPartObject = p;
             }
 
             else if (addPartOutsourcedRadioButton.Checked == true)
@@ -155,6 +172,8 @@ namespace C968FinalProject
                 Part p = new Outsourced(Counters.PartsIDCounter, addPartNameTextBox.Text, price, inventory, min, max, addPartSourceTextBox.Text);
 
                 Inventory.addPart(p);
+
+                Counters.SelectedPartObject = p;
             }
 
             // Close the Add Part form
@@ -177,6 +196,44 @@ namespace C968FinalProject
             else
             {
                 addPartSaveButton.Enabled = true;
+            }
+        }
+
+        private void InventoryChecker()
+        {
+            // Check whether Inventory is between Min and Max, Min < Max, and Max > Min
+            if ((addPartInventoryTextBox.TextLength > 0) && (addPartMinTextBox.TextLength > 0) && (addPartMaxTextBox.TextLength > 0))
+            {
+                int inv = int.Parse(addPartInventoryTextBox.Text);
+                int min = int.Parse(addPartMinTextBox.Text);
+                int max = int.Parse(addPartMaxTextBox.Text);
+
+                if ((inv < min) || (inv > max))
+                {
+                    MessageBox.Show("Inventory must be greater than Min and less than Max.");
+
+                    addPartInventoryTextBox.Clear();
+                }
+            }
+
+            if ((addPartMinTextBox.TextLength > 0) && (addPartMaxTextBox.TextLength > 0))
+            {
+                int min = int.Parse(addPartMinTextBox.Text);
+                int max = int.Parse(addPartMaxTextBox.Text);
+
+                if (min > max)
+                {
+                    MessageBox.Show("Min must be less than Max");
+
+                    addPartMinTextBox.Clear();
+                }
+
+                if (max < min)
+                {
+                    MessageBox.Show("Max must be greater than Min.");
+
+                    addPartMaxTextBox.Clear();
+                }
             }
         }
     }

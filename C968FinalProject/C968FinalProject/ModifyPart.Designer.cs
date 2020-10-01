@@ -129,6 +129,7 @@
             this.modifyPartSourceTextBox.Name = "modifyPartSourceTextBox";
             this.modifyPartSourceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartSourceTextBox.TabIndex = 25;
+            this.modifyPartSourceTextBox.TextChanged += new System.EventHandler(this.modifyPartSourceTextBox_TextChanged);
             // 
             // modifyPartMaxTextBox
             // 
@@ -136,6 +137,8 @@
             this.modifyPartMaxTextBox.Name = "modifyPartMaxTextBox";
             this.modifyPartMaxTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyPartMaxTextBox.TabIndex = 24;
+            this.modifyPartMaxTextBox.TextChanged += new System.EventHandler(this.modifyPartMaxTextBox_TextChanged);
+            this.modifyPartMaxTextBox.Leave += new System.EventHandler(this.modifyPartMaxTextBox_Leave);
             // 
             // modifyPartMinTextBox
             // 
@@ -143,6 +146,8 @@
             this.modifyPartMinTextBox.Name = "modifyPartMinTextBox";
             this.modifyPartMinTextBox.Size = new System.Drawing.Size(60, 20);
             this.modifyPartMinTextBox.TabIndex = 23;
+            this.modifyPartMinTextBox.TextChanged += new System.EventHandler(this.modifyPartMinTextBox_TextChanged);
+            this.modifyPartMinTextBox.Leave += new System.EventHandler(this.modifyPartMinTextBox_Leave);
             // 
             // modifyPartPriceTextBox
             // 
@@ -150,6 +155,7 @@
             this.modifyPartPriceTextBox.Name = "modifyPartPriceTextBox";
             this.modifyPartPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartPriceTextBox.TabIndex = 22;
+            this.modifyPartPriceTextBox.TextChanged += new System.EventHandler(this.modifyPartPriceTextBox_TextChanged);
             // 
             // modifyPartInventoryTextBox
             // 
@@ -157,6 +163,8 @@
             this.modifyPartInventoryTextBox.Name = "modifyPartInventoryTextBox";
             this.modifyPartInventoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartInventoryTextBox.TabIndex = 21;
+            this.modifyPartInventoryTextBox.TextChanged += new System.EventHandler(this.modifyPartInventoryTextBox_TextChanged);
+            this.modifyPartInventoryTextBox.Leave += new System.EventHandler(this.modifyPartInventoryTextBox_Leave);
             // 
             // modifyPartNameTextBox
             // 
@@ -164,6 +172,7 @@
             this.modifyPartNameTextBox.Name = "modifyPartNameTextBox";
             this.modifyPartNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartNameTextBox.TabIndex = 20;
+            this.modifyPartNameTextBox.TextChanged += new System.EventHandler(this.modifyPartNameTextBox_TextChanged);
             // 
             // modifyPartIDTextBox
             // 
@@ -183,6 +192,7 @@
             this.modifyPartOutsourcedRadioButton.TabStop = true;
             this.modifyPartOutsourcedRadioButton.Text = "Outsourced";
             this.modifyPartOutsourcedRadioButton.UseVisualStyleBackColor = true;
+            this.modifyPartOutsourcedRadioButton.CheckedChanged += new System.EventHandler(this.modifyPartOutsourcedRadioButton_CheckedChanged);
             // 
             // modifyPartInhouseRadioButton
             // 
@@ -194,6 +204,7 @@
             this.modifyPartInhouseRadioButton.TabStop = true;
             this.modifyPartInhouseRadioButton.Text = "In-House";
             this.modifyPartInhouseRadioButton.UseVisualStyleBackColor = true;
+            this.modifyPartInhouseRadioButton.CheckedChanged += new System.EventHandler(this.modifyPartInhouseRadioButton_CheckedChanged);
             // 
             // modifyPartCancelButton
             // 
@@ -203,6 +214,7 @@
             this.modifyPartCancelButton.TabIndex = 34;
             this.modifyPartCancelButton.Text = "Cancel";
             this.modifyPartCancelButton.UseVisualStyleBackColor = true;
+            this.modifyPartCancelButton.Click += new System.EventHandler(this.modifyPartCancelButton_Click);
             // 
             // modifyPartSaveButton
             // 
@@ -212,6 +224,7 @@
             this.modifyPartSaveButton.TabIndex = 33;
             this.modifyPartSaveButton.Text = "Save";
             this.modifyPartSaveButton.UseVisualStyleBackColor = true;
+            this.modifyPartSaveButton.Click += new System.EventHandler(this.modifyPartSaveButton_Click);
             // 
             // modifyPartCompanyNameLabel
             // 
