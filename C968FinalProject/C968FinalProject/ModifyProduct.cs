@@ -20,10 +20,8 @@ namespace C968FinalProject
             InitializeComponent();
             modifyCandidatePartsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             modifyCandidatePartsDataGridView.ReadOnly = true;
-            // FIXME: After enabling the Add button, make sure the above read only thing doesn't mess anything up
             modifyCandidatePartsDataGridView.DataSource = Inventory.AllParts;
             modifyAssociatedPartsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            // FIXME: I think this is redundant after adding this to MainScreen Counters.SelectedProductObject = Inventory.Products[Counters.SelectedProductIndex];
             modifyAssociatedPartsDataGridView.DataSource = Counters.SelectedProductObject.AssociatedParts;
         }
 
@@ -51,6 +49,16 @@ namespace C968FinalProject
             Counters.SelectedPartIndex = modifyAssociatedPartsDataGridView.CurrentCell.RowIndex;
 
             Counters.SelectedPartObject = Inventory.Products[Counters.SelectedProductIndex].AssociatedParts[Counters.SelectedPartIndex];
+        }
+
+        private void modifyCandidatePartsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            modifyCandidatePartsDataGridView.ClearSelection();
+        }
+
+        private void modifyAssociatedPartsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            modifyAssociatedPartsDataGridView.ClearSelection();
         }
 
         private void modifyProductNameTextBox_TextChanged(object sender, EventArgs e)
@@ -85,6 +93,16 @@ namespace C968FinalProject
 
         private void modifyProductInventoryTextBox_Leave(object sender, EventArgs e)
         {
+            if (modifyProductInventoryTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(modifyProductInventoryTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    modifyProductInventoryTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -101,6 +119,19 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+
+        private void modifyProductPriceTextBox_Leave(object sender, EventArgs e)
+        {
+            if (modifyProductPriceTextBox.TextLength > 0)
+            {
+                if (!decimal.TryParse(modifyProductPriceTextBox.Text, out decimal i))
+                {
+                    MessageBox.Show("Please enter a decimal value.");
+
+                    modifyProductPriceTextBox.Clear();
+                }
+            }
         }
 
         private void modifyProductMinTextBox_TextChanged(object sender, EventArgs e)
@@ -120,6 +151,16 @@ namespace C968FinalProject
 
         private void modifyProductMinTextBox_Leave(object sender, EventArgs e)
         {
+            if (modifyProductMinTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(modifyProductMinTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    modifyProductMinTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -140,6 +181,16 @@ namespace C968FinalProject
 
         private void modifyProductMaxTextBox_Leave(object sender, EventArgs e)
         {
+            if (modifyProductMaxTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(modifyProductMaxTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    modifyProductMaxTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -184,8 +235,35 @@ namespace C968FinalProject
 
         private void modifyCandidatePartSearchButton_Click(object sender, EventArgs e)
         {
-            // FIXME: Implement search
+            modifyCandidatePartsDataGridView.ClearSelection();
+
+            bool found = false;
+
+            if (!int.TryParse(modifyCandidatePartSearchTextBox.Text, out int id))
+            {
+                MessageBox.Show("Part ID must be numeric.");
+
+                modifyCandidatePartSearchTextBox.Clear();
+            }
+
+            foreach (DataGridViewRow row in modifyCandidatePartsDataGridView.Rows)
+            {
+                Part p = (Part)row.DataBoundItem;
+
+                if (p.PartID == id)
+                {
+                    row.Selected = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false)
+            {
+                MessageBox.Show("Part ID not found.");
+            }
         }
+    
 
         private void UpdateSaveButton()
         {

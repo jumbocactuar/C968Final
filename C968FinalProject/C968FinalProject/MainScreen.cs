@@ -27,6 +27,16 @@ namespace C968FinalProject
 
         }
 
+        private void partsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            partsDataGridView.ClearSelection();
+        }
+
+        private void productsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            productsDataGridView.ClearSelection();
+        }
+
         private void partsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Counters.SelectedPartIndex = partsDataGridView.CurrentCell.RowIndex;
@@ -97,12 +107,64 @@ namespace C968FinalProject
 
         private void partsSearchButton_Click(object sender, EventArgs e)
         {
-            //FIXME: Give this button something to do
+            partsDataGridView.ClearSelection();
+
+            bool found = false;
+
+            if (!int.TryParse(partsSearchTextBox.Text, out int id))
+            {
+                MessageBox.Show("Part ID must be numeric.");
+
+                partsSearchTextBox.Clear();
+            }
+
+            foreach (DataGridViewRow row in partsDataGridView.Rows)
+            {
+                Part p = (Part)row.DataBoundItem;
+
+                if (p.PartID == id)
+                {
+                    row.Selected = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false)
+            {
+                MessageBox.Show("Part ID not found.");
+            }
         }
 
         private void productsSearchButton_Click(object sender, EventArgs e)
         {
-            //FIXME: Give this button something to do
+            productsDataGridView.ClearSelection();
+
+            bool found = false;
+
+            if (!int.TryParse(productsSearchTextBox.Text, out int id))
+            {
+                MessageBox.Show("Product ID must be numeric.");
+
+                productsSearchTextBox.Clear();
+            }
+
+            foreach (DataGridViewRow row in productsDataGridView.Rows)
+            {
+                Product p = (Product)row.DataBoundItem;
+
+                if (p.ProductID == id)
+                {
+                    row.Selected = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false)
+            {
+                MessageBox.Show("Product ID not found.");
+            }
         }
         private void programExitButton_Click(object sender, EventArgs e)
         {

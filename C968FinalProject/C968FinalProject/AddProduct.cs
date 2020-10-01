@@ -16,7 +16,6 @@ namespace C968FinalProject
     {
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false, false };
         public BindingList<Part> associatedParts = new BindingList<Part>();
-        // FIXME: Can a value be displayed in a text box that is disabled? Is it preferable to set the field to read only?
 
         public addProductForm()
         {
@@ -32,6 +31,16 @@ namespace C968FinalProject
             // Disable the Save button until all fields contain values
             addProductSaveButton.Enabled = false;
             addProductIDTextBox.Text = $"{Counters.ProductsIDCounter + 1}";
+        }
+
+        private void candidatePartsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            candidatePartsDataGridView.ClearSelection();
+        }
+
+        private void associatedPartsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            associatedPartsDataGridView.ClearSelection();
         }
 
         private void candidatePartsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -73,6 +82,16 @@ namespace C968FinalProject
 
         private void addProductInventoryTextBox_Leave(object sender, EventArgs e)
         {
+            if (addProductInventoryTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addProductInventoryTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addProductInventoryTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -89,6 +108,19 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+
+        private void addProductPriceTextBox_Leave(object sender, EventArgs e)
+        {
+            if (addProductPriceTextBox.TextLength > 0)
+            {
+                if (!decimal.TryParse(addProductPriceTextBox.Text, out decimal i))
+                {
+                    MessageBox.Show("Please enter a decimal value.");
+
+                    addProductPriceTextBox.Clear();
+                }
+            }
         }
 
         private void addProductMinTextBox_TextChanged(object sender, EventArgs e)
@@ -108,6 +140,16 @@ namespace C968FinalProject
 
         private void addProductMinTextBox_Leave(object sender, EventArgs e)
         {
+            if (addProductMinTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addProductMinTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addProductMinTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -128,6 +170,16 @@ namespace C968FinalProject
 
         private void addProductMaxTextBox_Leave(object sender, EventArgs e)
         {
+            if (addProductMaxTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addProductMaxTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addProductMaxTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -160,6 +212,8 @@ namespace C968FinalProject
 
             Inventory.addProduct(p);
 
+            Counters.SelectedProductObject = p;
+
             // Close the Add Product form
             Close();
         }
@@ -171,7 +225,33 @@ namespace C968FinalProject
 
         private void candidatePartSearchButton_Click(object sender, EventArgs e)
         {
-            // FIXME: Look up a part in the AllParts list
+            candidatePartsDataGridView.ClearSelection();
+
+            bool found = false;
+
+            if (!int.TryParse(candidatePartSearchTextBox.Text, out int id))
+            {
+                MessageBox.Show("Part ID must be numeric.");
+
+                candidatePartSearchTextBox.Clear();
+            }
+
+            foreach (DataGridViewRow row in candidatePartsDataGridView.Rows)
+            {
+                Part p = (Part)row.DataBoundItem;
+
+                if (p.PartID == id)
+                {
+                    row.Selected = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found == false)
+            {
+                MessageBox.Show("Part ID not found.");
+            }
         }
 
         private void UpdateSaveButton()

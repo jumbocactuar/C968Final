@@ -134,6 +134,7 @@
             this.addProductPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.addProductPriceTextBox.TabIndex = 19;
             this.addProductPriceTextBox.TextChanged += new System.EventHandler(this.addProductPriceTextBox_TextChanged);
+            this.addProductPriceTextBox.Leave += new System.EventHandler(this.addProductPriceTextBox_Leave);
             // 
             // addProductInventoryTextBox
             // 
@@ -176,6 +177,7 @@
             this.candidatePartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.candidatePartsDataGridView.TabIndex = 28;
             this.candidatePartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.candidatePartsDataGridView_CellClick);
+            this.candidatePartsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.candidatePartsDataGridView_DataBindingComplete);
             // 
             // associatedPartsDataGridView
             // 
@@ -191,6 +193,7 @@
             this.associatedPartsDataGridView.RowTemplate.Height = 24;
             this.associatedPartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.associatedPartsDataGridView.TabIndex = 29;
+            this.associatedPartsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.associatedPartsDataGridView_DataBindingComplete);
             // 
             // addProductFormLabel
             // 

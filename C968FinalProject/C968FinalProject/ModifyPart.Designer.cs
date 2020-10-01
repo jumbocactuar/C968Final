@@ -130,6 +130,7 @@
             this.modifyPartSourceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartSourceTextBox.TabIndex = 25;
             this.modifyPartSourceTextBox.TextChanged += new System.EventHandler(this.modifyPartSourceTextBox_TextChanged);
+            this.modifyPartSourceTextBox.Leave += new System.EventHandler(this.modifyPartSourceTextBox_Leave);
             // 
             // modifyPartMaxTextBox
             // 
@@ -156,6 +157,7 @@
             this.modifyPartPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyPartPriceTextBox.TabIndex = 22;
             this.modifyPartPriceTextBox.TextChanged += new System.EventHandler(this.modifyPartPriceTextBox_TextChanged);
+            this.modifyPartPriceTextBox.Leave += new System.EventHandler(this.modifyPartPriceTextBox_Leave);
             // 
             // modifyPartInventoryTextBox
             // 

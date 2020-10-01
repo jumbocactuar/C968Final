@@ -45,7 +45,7 @@ namespace C968FinalProject
         public static Product SelectedProductObject { get; set; }
     }
 
-    public class Inventory // FIXME: Should this whole class be static? Just the methods/properties?
+    public class Inventory
     {
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
@@ -85,10 +85,13 @@ namespace C968FinalProject
             }
         }
 
-        /*public Product lookupProduct(int q)
+        public static Product lookupProduct(int q)
         {
-            // FIXME: This is going to be some LINQ stuff, I bet.
-        }*/
+            // Look up the Product at Products index q
+            Product p = Products[q];
+
+            return p;
+        }
 
         public static void updateProduct(int q, Product p)
         {
@@ -107,6 +110,7 @@ namespace C968FinalProject
 
         public static bool deletePart(int q)
         {
+            // Remove the Part from AllParts at index q
             try
             {
                 AllParts.RemoveAt(q);
@@ -120,21 +124,25 @@ namespace C968FinalProject
             }
         }
 
-        /*public Part lookupPart(int q)
+        public Part lookupPart(int q)
         {
-            // FIXME: This is going to be some LINQ stuff, I bet.
+            // Return the Part at AllParts index q
+            Part p = AllParts[q];
+
+            return p;
         }
-        */
+        
         public static void updatePart(int q, Part p)
         {
+            // Replace the Part at AllParts index q with Part p
             AllParts[q] = p;
         }
     }
 
     public class Product
     {
-        public BindingList<Part> AssociatedParts { get; set; } // FIXME: Do I need to be "get"ing here?
-        public int ProductID { get; set; } // FIXME: Should all these be "set"ing, too?
+        public BindingList<Part> AssociatedParts { get; set; }
+        public int ProductID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int InStock { get; set; }
@@ -143,11 +151,13 @@ namespace C968FinalProject
 
         public void addAssociatedPart(Part part)
         {
+            // Add the selected Part to the Product at the selected Products index
             Inventory.Products[Counters.SelectedProductIndex].AssociatedParts.Add(part);
         }
 
         public bool removeAssociatedPart(int p)
         {
+            // Remove the Part at AssociatedParts index p
             try
             {
                 Inventory.Products[Counters.SelectedProductIndex].AssociatedParts.RemoveAt(p);
@@ -161,10 +171,13 @@ namespace C968FinalProject
             }
         }
 
-        /*public Part lookupAssociatedPart(int p)
+        public Part lookupAssociatedPart(int q)
         {
-            // FIXME: This is going to be some LINQ stuff, I bet.
-        }*/
+            // Look up the selected Product's AssociatedPart at index q
+            Part p = Inventory.Products[Counters.SelectedProductIndex].AssociatedParts[q];
+
+            return p;
+        }
 
         // Default constructor
         public Product()
@@ -212,16 +225,6 @@ namespace C968FinalProject
         }
 
         public abstract string PartSource();
-
-        /*public override string ToString() => $"{PartID}" + $"{Name}" + $"{Price:C}" + $"{InStock}" + $"{Min}" + $"{Max}"; // FIXME: Revisit this, see how it needs to be to fit into the datagridview
-
-        // FIXME: The example has an abstract method used by the derived classes here--is it necessary?
-        // Is this good? Is this necessary?
-        public abstract string PartSource();
-        // FIXME: I think I'll need something around here to allow switching of parts between in-house and outsourced - think of how to preserve part numbers
-        // Can I say something like "if the part number exists, use it?" Will that data survive a move between classes? I think the object will get destroyed and recreated
-        // when it moves between the two.
-        // On second thought, is preserving the part number strictly necessary? Check the rubric.*/
     }
 
     public class Inhouse : Part
@@ -253,8 +256,6 @@ namespace C968FinalProject
         }
 
         public override string PartSource() => $"{MachineID}";
-
-        //public override string ToString() => $"{base.ToString()}" + $"{MachineID}";
     }
 
     public class Outsourced : Part
@@ -285,8 +286,6 @@ namespace C968FinalProject
             }
         }
 
-        public override string PartSource() => $"{CompanyName}"; // FIXME: Does this need the string interpolation stuff? It's already a string.
-
-        //public override string ToString() => $"{base.ToString()}" + $"{CompanyName}";
+        public override string PartSource() => $"{CompanyName}";
     }
 }

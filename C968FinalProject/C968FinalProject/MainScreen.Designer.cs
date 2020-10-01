@@ -194,7 +194,9 @@
             this.productsDataGridView.RowHeadersWidth = 51;
             this.productsDataGridView.Size = new System.Drawing.Size(600, 300);
             this.productsDataGridView.TabIndex = 14;
+            this.productsDataGridView.TabStop = false;
             this.productsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsDataGridView_CellClick);
+            this.productsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.productsDataGridView_DataBindingComplete);
             // 
             // partsDataGridView
             // 
@@ -208,7 +210,9 @@
             this.partsDataGridView.RowHeadersWidth = 51;
             this.partsDataGridView.Size = new System.Drawing.Size(600, 300);
             this.partsDataGridView.TabIndex = 15;
+            this.partsDataGridView.TabStop = false;
             this.partsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.partsDataGridView_CellClick);
+            this.partsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.partsDataGridView_DataBindingComplete);
             // 
             // mainScreenForm
             // 

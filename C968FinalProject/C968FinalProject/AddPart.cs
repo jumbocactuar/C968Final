@@ -76,6 +76,16 @@ namespace C968FinalProject
 
         private void addPartInventoryTextBox_Leave(object sender, EventArgs e)
         {
+            if (addPartInventoryTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addPartInventoryTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addPartInventoryTextBox.Clear();
+                }
+            }
+
             InventoryChecker();
         }
 
@@ -92,6 +102,19 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+
+        private void addPartPriceTextBox_Leave(object sender, EventArgs e)
+        {
+            if (addPartPriceTextBox.TextLength > 0)
+            {
+                if (!decimal.TryParse(addPartPriceTextBox.Text, out decimal i))
+                {
+                    MessageBox.Show("Please enter a decimal value.");
+
+                    addPartPriceTextBox.Clear();
+                }
+            }
         }
 
         private void addPartMinTextBox_TextChanged(object sender, EventArgs e)
@@ -112,6 +135,16 @@ namespace C968FinalProject
         private void addPartMinTextBox_Leave(object sender, EventArgs e)
         {
             InventoryChecker();
+
+            if (addPartMinTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addPartMinTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addPartMinTextBox.Clear();
+                }
+            }
         }
 
         private void addPartMaxTextBox_TextChanged(object sender, EventArgs e)
@@ -132,6 +165,16 @@ namespace C968FinalProject
         private void addPartMaxTextBox_Leave(object sender, EventArgs e)
         {
             InventoryChecker();
+
+            if (addPartMaxTextBox.TextLength > 0)
+            {
+                if (!int.TryParse(addPartMaxTextBox.Text, out int i))
+                {
+                    MessageBox.Show("Please enter a numeric value.");
+
+                    addPartMaxTextBox.Clear();
+                }
+            }
         }
 
         private void addPartSourceTextBox_TextChanged(object sender, EventArgs e)
@@ -147,6 +190,18 @@ namespace C968FinalProject
             }
 
             UpdateSaveButton();
+        }
+        private void addPartSourceTextBox_Leave(object sender, EventArgs e)
+        {
+            if ((addPartInhouseRadioButton.Checked == true) && (addPartSourceTextBox.TextLength > 0))
+            {
+                if (!int.TryParse(addPartSourceTextBox.Text, out int i))
+                {
+                        MessageBox.Show("Please enter a numeric value.");
+
+                        addPartSourceTextBox.Clear();
+                }
+            }
         }
 
         private void addPartSaveButton_Click(object sender, EventArgs e)

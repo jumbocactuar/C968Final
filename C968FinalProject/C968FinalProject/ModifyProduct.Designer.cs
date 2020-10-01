@@ -131,6 +131,7 @@
             this.modifyAssociatedPartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.modifyAssociatedPartsDataGridView.TabIndex = 49;
             this.modifyAssociatedPartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modifyAssociatedPartsDataGridView_CellClick);
+            this.modifyAssociatedPartsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.modifyAssociatedPartsDataGridView_DataBindingComplete);
             // 
             // modifyCandidatePartsDataGridView
             // 
@@ -147,6 +148,7 @@
             this.modifyCandidatePartsDataGridView.Size = new System.Drawing.Size(600, 244);
             this.modifyCandidatePartsDataGridView.TabIndex = 48;
             this.modifyCandidatePartsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.modifyCandidatePartsDataGridView_CellClick);
+            this.modifyCandidatePartsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.modifyCandidatePartsDataGridView_DataBindingComplete);
             // 
             // modifyProductMaxLabel
             // 
@@ -227,6 +229,7 @@
             this.modifyProductPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.modifyProductPriceTextBox.TabIndex = 39;
             this.modifyProductPriceTextBox.TextChanged += new System.EventHandler(this.modifyProductPriceTextBox_TextChanged);
+            this.modifyProductPriceTextBox.Leave += new System.EventHandler(this.modifyProductPriceTextBox_Leave);
             // 
             // modifyProductInventoryTextBox
             // 

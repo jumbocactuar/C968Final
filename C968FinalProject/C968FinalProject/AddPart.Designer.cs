@@ -117,6 +117,7 @@
             this.addPartPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.addPartPriceTextBox.TabIndex = 6;
             this.addPartPriceTextBox.TextChanged += new System.EventHandler(this.addPartPriceTextBox_TextChanged);
+            this.addPartPriceTextBox.Leave += new System.EventHandler(this.addPartPriceTextBox_Leave);
             // 
             // addPartMinTextBox
             // 
@@ -143,6 +144,7 @@
             this.addPartSourceTextBox.Size = new System.Drawing.Size(100, 20);
             this.addPartSourceTextBox.TabIndex = 9;
             this.addPartSourceTextBox.TextChanged += new System.EventHandler(this.addPartSourceTextBox_TextChanged);
+            this.addPartSourceTextBox.Leave += new System.EventHandler(this.addPartSourceTextBox_Leave);
             // 
             // addPartIDLabel
             // 
